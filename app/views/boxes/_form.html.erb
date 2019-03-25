@@ -1,0 +1,32 @@
+<%= form_with(model: box, local: true) do |form| %>
+  <% if box.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(box.errors.count, "error") %> prohibited this box from being saved:</h2>
+
+      <ul>
+      <% box.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-md-6">
+    <%= form.label "Descripcion" %>
+    <%= form.text_area :descripcion, id: :box_descripcion, class:"form-control", placeholder:"medidas del box" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label 'Tamaño' %>
+    <%= form.text_field :tamano, id: :box_tamano,class:"form-control", placeholder:"" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label 'Estado' %>
+    <%= form.select(:state, options_for_select([["Reservado",1], ["Libre",0]], selected: @box.state), {prompt: 'Estados'},  {:class => 'form-control form-control-sm' }) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar", class: "btn btn-primary"  %>
+  </div>
+<% end %>

@@ -1,0 +1,4 @@
+Migraciones
+	rails g migration AddStateToBoat state:integer
+
+	rails g migration AddUserToClient user:references

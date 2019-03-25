@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enabled_person: one
+  clients: one
+  descripcion: MyString
+
+two:
+  enabled_person: two
+  clients: two
+  descripcion: MyString

@@ -1,0 +1,29 @@
+
+
+<p>
+  <strong>Clients:</strong>
+  <%= @enable_person.clients %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @enable_person.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @enable_person.apellido %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @enable_person.dni %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @enable_person.estado %>
+</p>
+
+<%= link_to 'Edit', edit_enable_person_path(@enable_person) %> |
+<%= link_to 'Back', enable_people_path %>

@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @boat.client.nombre_completo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @boat.nombre %>
+</p>
+
+<p>
+  <strong>Matricula:</strong>
+  <%= @boat.matricula %>
+</p>
+
+<p>
+  <strong>Motor:</strong>
+  <%= @boat.motor %>
+</p>
+
+<%= link_to 'Modificar', edit_boat_path(@boat) %> |
+<%= link_to 'Volver', boats_path %>

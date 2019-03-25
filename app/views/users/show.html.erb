@@ -1,0 +1,37 @@
+<div>
+	<div class="text-center">
+		<h1 class="h1">Datos de usuario #<%= @user.id%></h1>
+	</div>
+	<div>
+		<p><label>Email:
+				<span>
+					<%= @user.email %>
+				</span>
+			</label>
+		</p>
+		<p><label>Apellido y nombre:
+				<span>
+					<%= @user.surname.upcase + ', ' + @user.name %>
+				</span>
+			</label>
+		</p>
+		<p><label>DNI nro:
+				<span>
+					<%= @user.dni %>
+				</span>
+			</label>
+		</p>
+		<p><label>Direccion:
+				<span>
+					<%= @user.address %>
+				</span>
+			</label>
+		</p>
+		<p><label>Tipo de usuario:
+				<span>
+					<%= @user.user_type %>
+				</span>
+			</label>
+		</p>
+	</div>
+</div>

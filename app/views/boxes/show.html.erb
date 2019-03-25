@@ -1,0 +1,22 @@
+<p>
+  <strong>Descripcion:</strong>
+  <%= @box.descripcion %>
+</p>
+
+<p>
+  <strong>Tamano:</strong>
+  <%= @box.tamano %>
+</p>
+
+
+  <strong>Estado:</strong>
+  <% case @box.state %>
+  	<% when 0  %>
+  		<p class="badge badge-success">Libre</p>
+  	<% when 1  %>
+  		<p class="badge badge-danger">Reservado</p>
+  <% end %>
+</p>
+
+<%= link_to 'Modificar', edit_box_path(@box) %> |
+<%= link_to 'Volver', boxes_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  box: one
+  fecha_desde: 2018-11-30
+  fecha_hasta: 2018-11-30
+  estado: 1
+
+two:
+  client: two
+  box: two
+  fecha_desde: 2018-11-30
+  fecha_hasta: 2018-11-30
+  estado: 1

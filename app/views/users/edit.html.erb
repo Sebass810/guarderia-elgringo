@@ -1,0 +1,44 @@
+<h2 class="text-center">Editar datos</h2>
+
+<%= form_for @user do |f| %>
+  <div>
+    <div class="row form-group">
+      <div class="col-4">
+        <%= f.label "Nombre" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="col-4">
+        <%= f.label "Apellido" %>
+        <%= f.text_field :surname, autocomplete: "surname", class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="col-4">
+        <%= f.label "DNI" %>
+        <%= f.number_field :dni, autocomplete: "dni", class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="col-4">
+        <%= f.label "Direccion" %>
+        <%= f.text_field :address, autocomplete: "address", class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="col-4">
+        <%= f.label "Correo electrónico" %>
+        <%= f.email_field :email, autocomplete: "email", class: 'form-control form-control-sm' %>
+      </div>
+
+      <div class="col-4">
+        <%= f.label "Tipo usuario" %>
+        <%= f.select(:user_type, options_for_select([["Usuario","user"], ["Operador","operador"],["Administrador","admin"]], selected: @user.user_type), {prompt: 'Tipo de usuario'},  {:class => 'form-control form-control-sm' }) %>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="actions">
+    <%= f.submit "Actualizar", class: 'btn btn-outline-success' %>
+
+  <%= link_to "Volver", :back, class: 'btn btn-outline-secondary btn-sm' %>
+  </div>
+<% end %>

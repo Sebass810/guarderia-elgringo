@@ -1,0 +1,29 @@
+
+
+<p>
+  <strong>Client:</strong>
+  <%= @reservation.client.nombre_completo %>
+</p>
+
+<p>
+  <strong>Box:</strong>
+  <%= @reservation.box.nombreb %>
+</p>
+
+<p>
+  <strong>Fecha desde:</strong>
+  <%= @reservation.fecha_desde %>
+</p>
+
+<p>
+  <strong>Fecha hasta:</strong>
+  <%= @reservation.fecha_hasta %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @reservation.estado %>
+</p>
+
+<%= link_to 'Modificar', edit_reservation_path(@reservation) %> |
+<%= link_to 'Volver', reservations_path %>

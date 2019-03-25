@@ -1,0 +1,35 @@
+
+
+<h1>Enable People</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clients</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Dni</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enable_people.each do |enable_person| %>
+      <tr>
+        <td><%= enable_person.clients %></td>
+        <td><%= enable_person.nombre %></td>
+        <td><%= enable_person.apellido %></td>
+        <td><%= enable_person.dni %></td>
+        <td><%= enable_person.estado %></td>
+        <td><%= link_to 'Show', enable_person %></td>
+        <td><%= link_to 'Edit', edit_enable_person_path(enable_person) %></td>
+        <td><%= link_to 'Destroy', enable_person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enable Person', new_enable_person_path %>

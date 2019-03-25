@@ -1,0 +1,42 @@
+
+<div class= "container-fluid text-center">
+<h1>Clientes</h1>
+</div>
+<table class="table table-hover">
+  
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Dni</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Estado</th>
+      <th colspan="3"><center> Acciones Posible</center></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        
+        <td><%= client.nombre %></td>
+        <td><%= client.apellido %></td>
+        <td><%= client.dni %></td>
+        <td><%= client.TelǸfono %></td>
+        <td><%= client.celular %></td>
+        <td><%= client.estado %></td>
+        <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Mostrar', client %></button></td>
+        <td><button type="button" class="btn btn-outline-success"><%= link_to 'Modificar', edit_client_path(client) %></button></td>
+        <td><button type="button" class="btn btn-outline-danger"><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Decea Eliminar el Cliente?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+
+<br>
+<div>
+<%= link_to 'Agregar Cliente', new_client_path %>
+</div>

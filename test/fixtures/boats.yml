@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  nombre: MyString
+  matricula: MyString
+  motor: MyString
+
+two:
+  client: two
+  nombre: MyString
+  matricula: MyString
+  motor: MyString

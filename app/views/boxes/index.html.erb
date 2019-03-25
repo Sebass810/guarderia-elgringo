@@ -1,0 +1,43 @@
+<div class= "container-fluid text-center">
+  <h1 class="h1">Lista de Boxes</h1>
+  <% if can? :new, Box %>
+    <%= link_to 'Nuevo Box', new_box_path, class: 'btn btn-lg btn-dark' %>
+  <% end%>
+  <hr>
+</div>
+<div class="row">
+  <% @boxes.each do |box| %>
+    <div class="col-3 text-center">
+      <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header"><%= box.id %></div>
+        <div class="card-body text-primary">
+          <h5 class="card-title"><%= box.tamano %></h5>
+          <p class="card-text"><%= box.descripcion %></p>
+          <% if box.state == 0 %>
+              <p class="badge badge-success"><span>Libre</span></p>
+          <% else %>
+              <p class="badge badge-danger"><span>Reservado</span></p>
+          <% end %>          
+        </div>
+        
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= link_to 'Mostrar', box, class: 'btn btn-outline-primary btn-sm' %>
+              <% if can? :update, Box %>
+                <%= link_to 'Reservar', new_reservation_path, class: 'btn btn-outline-secondary btn-sm' %>
+              <% end %>
+            </li>
+            <li class="list-group-item">
+              <% if can? :edit, Box %>
+                <%= link_to 'Modificar', edit_box_path(box), class: 'btn btn-outline-success btn-sm' %>
+              <% end %>
+              <% if can? :destroy, Box%>
+                <%= link_to 'Eliminar', box, method: :delete, data: { confirm: 'Desea Eliminar este Box?' }, class: 'btn btn-outline-danger btn-sm' %>
+              <% end %>
+            </li>
+          </ul>
+        
+      </div>
+    </div>
+  <% end %>
+</div>

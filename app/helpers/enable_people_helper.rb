@@ -1,0 +1,2 @@
+module EnablePeopleHelper
+end

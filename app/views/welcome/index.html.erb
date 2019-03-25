@@ -1,0 +1,54 @@
+<style type="text/css"> 
+      .jumbotron {
+        position: relative;
+        margin-top: 26px;
+        background-image:url(https://imgar.zonapropcdn.com/avisos/1/00/41/26/79/37/1200x1200/1559062561.jpg); 
+        background-size: cover;
+        height: 300px;
+        width: 50px
+        background-color: rgba(0,0,255,0.1);
+      }
+</style>
+
+<div class="container-fluid">
+  <div class='container-fluid'>
+    <div class="jumbotron">
+  </div>
+  <center><h1>Guarderia el Gringo</h1></center> 
+  <% if !user_signed_in? or (user_signed_in? and current_user.user_type != 'admin')%>
+    <div class="container-fluid">    
+        <div class="row-mb">
+            <h4 class= " col-xs-12 col-sm-12 col-md-8 col-lg-12 ">
+              
+              <br>
+               Tu Nuevo Punto de Encuentro.
+            </h4>
+           <div class= "col-xs-12 col-sm-12 col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
+               <div class= "entry-content">
+                  <p  class= "lead">
+                 "Guarderia EL Gringo ubicada sobre el Rio Parana, mas precisamente frente a la conocida Isla Mesa. Junto a los desarrollos inmobiliarios mas importa de provincia de Corrientes". Es por ello que resulta ser una guarderia de primer nivel dentro del area de mayor potencial de expancion del nuevo polo nautico de corrientes."
+                  </p>
+                  <p  class= "lead">
+                 "El acceso  ripieado es fuido y rapido, por ruta 12 camino a Paso de la Patria, antes del control policial girar a la izquierda 4km"
+                  </p>
+                  <p  class= "lead">
+                 "Pero la ventaja que te ofrece Guarderia EL Gringo es que te brinda la posibilidad de una salida rapia al famoso Banco de Arena de Corrientes y a las mejores zonas de pesca como ser La misma Isla Mesa, Isla Pelon, La Tacuarita, La San Carlos, La Palmerita, Los Cables, La Golondrina, etc."
+                  </p>
+                </div>
+            </div>    
+
+          </div>
+        </div> 
+  <% end %>
+
+
+ </div>
+</div>
+   
+
+
+
+  
+   
+  
+ 

@@ -1,0 +1,34 @@
+
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @client.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @client.apellido %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @client.dni %>
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= @client.TelǸfono %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @client.celular %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @client.estado %>
+</p>
+
+<%= link_to 'Modificar', edit_client_path(@client) %> |
+<%= link_to 'Reservar', new_reservation_path %>

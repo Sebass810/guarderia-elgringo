@@ -1,0 +1,39 @@
+<%= form_with(model: boat, local: true) do |form| %>
+  <% if boat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(boat.errors.count, "error") %> prohibited this boat from being saved:</h2>
+
+      <ul>
+      <% boat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group col-md-6">
+    <%= form.label :Cliente %>
+    <% datos = current_user.client.apellido + ', ' +  current_user.client.nombre %>
+    <%= form.text_field :client_name, id: :boat_client, value: datos, class: "form-control", readonly: true %>
+    <%= form.hidden_field :client_id, id: :boat_client_id, value: current_user.client.id %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label "Nombre de la embarcación" %>
+    <%= form.text_field :nombre, id: :boat_nombre, class: "form-control", placeholder: 'Nombre' %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :matricula %>
+    <%= form.text_field :matricula, id: :boat_matricula, class: "form-control", placeholder:"Matricula" %>
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= form.label :motor %>
+    <%= form.text_field :motor, id: :boat_motor, class: "form-control", placeholder: "Motor" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit"Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>
