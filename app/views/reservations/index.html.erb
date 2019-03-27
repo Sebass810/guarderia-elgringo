@@ -1,9 +1,5 @@
-
-
 <h1>Reserva</h1>
-
 <table class="table table-hover">
-<table>
   <thead>
     <tr>
       <th scope="col">Client</th>
@@ -23,9 +19,9 @@
         <td><%= reservation.fecha_desde %></td>
         <td><%= reservation.fecha_hasta %></td>
         <td><%= reservation.estado %></td>
-        <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Mostrar', reservation %></td>
-        <td><button type="button" class="btn btn-outline-success"><%= link_to 'Modificar', edit_reservation_path(reservation) %></td>
-        <td><button type="button" class="btn btn-outline-danger"><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Deseas Eliminar la reserva?' } %></td>
+        <td><%= link_to 'Mostrar', reservation, class: "btn btn-sm btn-outline-primary" %></td>
+        <td><%= link_to 'Modificar', edit_reservation_path(reservation), class: "btn btn-sm btn-outline-success" %></td>
+        <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Deseas Eliminar la reserva?' }, class: "btn btn-sm btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

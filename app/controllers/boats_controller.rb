@@ -4,7 +4,17 @@ class BoatsController < ApplicationController
   # GET /boats
   # GET /boats.json
   def index
-    @boats = Boat.all
+    if user_signed_in?
+      if can? :manage, Boat
+        @boats = Boat.all
+      elsif !current_user.client.nil?
+        @boats = Boat.where('client_id = ?', current_user.client.id)
+      else
+        redirect_to(new_client_path)
+      end
+    else
+      redirect_to(root_path)
+    end
   end
 
   # GET /boats/1

@@ -4,7 +4,17 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    if user_signed_in?
+      if can? :manage, Reservation
+        @reservations = Reservation.all
+      elsif !current_user.client.nil?
+        @reservations = Reservation.where('client_id = ?', current_user.client.id)
+      else
+        redirect_to(new_client_path)
+      end
+    else
+      redirect_to(root_path)
+    end
   end
 
   # GET /reservations/1
@@ -16,9 +26,13 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
-    @reservation = Reservation.new
-    @boxes = Box.where('state = 0')
-    @boats = Boat.where('client_id = ?', current_user.client.id)
+    if !current_user.client.nil?
+      @reservation = Reservation.new
+      @boxes = Box.where('state = 0')
+      @boats = Boat.where('client_id = ?', current_user.client.id)
+    else
+      redirect_to(new_client_path)
+    end
   end
 
   # GET /reservations/1/edit
@@ -31,9 +45,10 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
     respond_to do |format|
       if @reservation.save
+        @reservation.box.state = 1
+        @reservation.box.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else

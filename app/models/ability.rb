@@ -8,6 +8,10 @@ class Ability
         can [:manage], User
         can [:manage], Client
         can [:manage], Boat
+        can [:manage], Reservation
+      elsif user.user_type == 'operador'
+        can [:manage], Boat
+        can [:manage], Reservation
       elsif user.user_type == 'user'
         can [:update], Box
         cannot [:new], Box
