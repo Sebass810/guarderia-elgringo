@@ -1,0 +1,5 @@
+rails generate migration AddNombreDeLaMigracionToTabla tipo:integer
+
+rails generate migration AddStateToBox state:integer
+
+rails generate migration AddUserToClient user:references

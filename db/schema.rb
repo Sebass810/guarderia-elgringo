@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190325134627) do
+ActiveRecord::Schema.define(version: 20190327192042) do
 
   create_table "boats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "client_id"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20190325134627) do
     t.string "motor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "state"
     t.index ["client_id"], name: "index_boats_on_client_id"
   end
 
@@ -45,14 +44,14 @@ ActiveRecord::Schema.define(version: 20190325134627) do
   end
 
   create_table "enable_people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "clients_id"
+    t.bigint "client_id"
     t.string "nombre"
     t.string "apellido"
     t.string "dni"
     t.string "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clients_id"], name: "index_enable_people_on_clients_id"
+    t.index ["client_id"], name: "index_enable_people_on_client_id"
   end
 
   create_table "enabled_clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -73,8 +72,6 @@ ActiveRecord::Schema.define(version: 20190325134627) do
     t.integer "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "boat_id"
-    t.index ["boat_id"], name: "index_reservations_on_boat_id"
     t.index ["box_id"], name: "index_reservations_on_box_id"
     t.index ["client_id"], name: "index_reservations_on_client_id"
   end
@@ -103,8 +100,7 @@ ActiveRecord::Schema.define(version: 20190325134627) do
 
   add_foreign_key "boats", "clients"
   add_foreign_key "clients", "users"
-  add_foreign_key "enable_people", "clients", column: "clients_id"
-  add_foreign_key "reservations", "boats"
+  add_foreign_key "enable_people", "clients"
   add_foreign_key "reservations", "boxes"
   add_foreign_key "reservations", "clients"
 end

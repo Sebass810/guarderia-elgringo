@@ -1,4 +1,3 @@
-
 <div class= "container-fluid text-center">
 <h1>Clientes</h1>
 </div>
@@ -12,7 +11,7 @@
       <th scope="col">Teléfono</th>
       <th scope="col">Celular</th>
       <th scope="col">Estado</th>
-      <th colspan="3"><center> Acciones Posible</center></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -26,9 +25,9 @@
         <td><%= client.TelǸfono %></td>
         <td><%= client.celular %></td>
         <td><%= client.estado %></td>
-        <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Mostrar', client %></button></td>
-        <td><button type="button" class="btn btn-outline-success"><%= link_to 'Modificar', edit_client_path(client) %></button></td>
-        <td><button type="button" class="btn btn-outline-danger"><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Decea Eliminar el Cliente?' } %></td>
+        <td><%= link_to 'Mostrar', client, class: "btn btn-sm btn-outline-primary" %></button></td>
+        <td><%= link_to 'Modificar', edit_client_path(client), class: "btn btn-sm btn-outline-success" %></button></td>
+        <td><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Decea Eliminar el Cliente?' }, class: "btn btn-sm btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

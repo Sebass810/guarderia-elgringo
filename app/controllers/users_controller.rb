@@ -4,7 +4,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = User.all
+    if can? :manage, User
+      @users = User.all
+    elsif can? :edit, User
+      @users = User.all.where('user_type != ?', 'admin')
+    else
+      redirect_to(root_path)
+    end
   end
 
 	def show

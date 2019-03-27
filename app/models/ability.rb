@@ -12,8 +12,14 @@ class Ability
       elsif user.user_type == 'operador'
         can [:manage], Boat
         can [:manage], Reservation
+        can [:manage], EnablePerson
+        can [:manage], Client
+        can [:new], User
+        can [:edit], User
+        can [:destroy], User
       elsif user.user_type == 'user'
         can [:update], Box
+        can [:edit], EnablePerson
         cannot [:new], Box
         cannot [:edit], Box
         cannot [:destroy], Box

@@ -1,11 +1,8 @@
-
-
-<h1>Enable People</h1>
-
-<table>
+<h1>Personas autorizadas</h1>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Clients</th>
+      <th>Cliente</th>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Dni</th>
@@ -17,14 +14,14 @@
   <tbody>
     <% @enable_people.each do |enable_person| %>
       <tr>
-        <td><%= enable_person.clients %></td>
+        <td><%= enable_person.client.nombre %></td>
         <td><%= enable_person.nombre %></td>
         <td><%= enable_person.apellido %></td>
         <td><%= enable_person.dni %></td>
         <td><%= enable_person.estado %></td>
-        <td><%= link_to 'Show', enable_person %></td>
-        <td><%= link_to 'Edit', edit_enable_person_path(enable_person) %></td>
-        <td><%= link_to 'Destroy', enable_person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', enable_person, class: 'btn btn-sm btn-outline-info' %></td>
+        <td><%= link_to 'Edit', edit_enable_person_path(enable_person), class: 'btn btn-sm btn-outline-success' %></td>
+        <td><%= link_to 'Destroy', enable_person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %></td>
       </tr>
     <% end %>
   </tbody>

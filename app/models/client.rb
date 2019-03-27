@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
 	has_many :boats, dependent: :destroy
 	has_many :reservations, dependent: :destroy
+	has_many :enable_persons, dependent: :destroy
 
 	belongs_to :user
 	

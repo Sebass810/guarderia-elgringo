@@ -1,10 +1,22 @@
 class EnablePeopleController < ApplicationController
   before_action :set_enable_person, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /enable_people
   # GET /enable_people.json
   def index
     @enable_people = EnablePerson.all
+    if can? :manage, EnablePerson
+      @enable_people = EnablePerson.all
+    elsif can? :edit, EnablePerson
+      if !current_user.client.nil?
+        @enable_people = @enable_people.where('client_id = ?', current_user.client.id)
+      else
+        redirect_to(new_client_path)  
+      end
+    else
+      redirect_to(root_path)
+    end
   end
 
   # GET /enable_people/1
@@ -25,7 +37,6 @@ class EnablePeopleController < ApplicationController
   # POST /enable_people.json
   def create
     @enable_person = EnablePerson.new(enable_person_params)
-
     respond_to do |format|
       if @enable_person.save
         format.html { redirect_to @enable_person, notice: 'Enable person was successfully created.' }
@@ -69,6 +80,6 @@ class EnablePeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enable_person_params
-      params.require(:enable_person).permit(:clients_id, :nombre, :apellido, :dni, :estado)
+      params.require(:enable_person).permit(:client_id, :nombre, :apellido, :dni, :estado)
     end
 end
