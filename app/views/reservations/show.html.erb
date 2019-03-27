@@ -22,7 +22,14 @@
 
 <p>
   <strong>Estado:</strong>
-  <%= @reservation.estado %>
+  <% case @reservation.estado %>
+    <% when 0 %>
+      <p><span class="badge badge-warning">Pendiente</span></p>
+    <% when 1 %>
+      <p><span class="badge badge-success">Aprobado</span></p>
+    <% when 2 %>
+      <p><span class="badge badge-danger">Cancelado</span></p>
+  <% end %>
 </p>
 
 <%= link_to 'Modificar', edit_reservation_path(@reservation) %> |

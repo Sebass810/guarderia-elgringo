@@ -1,28 +1,20 @@
- <div class="row-justify-center">
-         <div class="d-flex">
-          
-              
-              
-              <div class="dropdown mr-1">
-                <button type="button" class="btn btn-primary" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,30">
-
-                  Clientes
-                </button> 
-              </div>
-               <div class="dropdown mr-1">
-                <button type="button" class="btn btn-primary" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,30">
-                  Lanchas
-                </button>    
-              </div>
-               <div class="dropdown mr-1">
-                <button type="button" class="btn btn-primary" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,30">
-                  Personas Autorizadas
-                </button>    
-              </div>
-               <div class="dropdown mr-1", class= "text-center">
-                <button type="button" class="btn btn-primary" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,30">
-                  Registros de Bajadas
-                </button>    
-          </div>
-           </div>
-          </div> 
+<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+  <li class="nav-item">
+    <%= link_to 'Clientes', clients_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Lanchas', boats_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Personas Autorizadas', enable_people_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Registros de Bajadas', enable_people_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Box', boxes_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Operador', boxes_path,class: 'nav-link' %>
+  </li>
+</ul>

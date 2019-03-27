@@ -14,12 +14,14 @@ class Ability
         can [:manage], Reservation
         can [:manage], EnablePerson
         can [:manage], Client
+        can [:manage], Box
         can [:new], User
         can [:edit], User
         can [:destroy], User
       elsif user.user_type == 'user'
         can [:update], Box
         can [:edit], EnablePerson
+        can [:new], Reservation
         cannot [:new], Box
         cannot [:edit], Box
         cannot [:destroy], Box

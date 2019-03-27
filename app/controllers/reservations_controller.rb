@@ -1,35 +1,30 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /reservations
   # GET /reservations.json
   def index
-    if user_signed_in?
-      if can? :manage, Reservation
-        @reservations = Reservation.all
-      elsif !current_user.client.nil?
-        @reservations = Reservation.where('client_id = ?', current_user.client.id)
-      else
-        redirect_to(new_client_path)
-      end
+    if can? :manage, Reservation
+      @reservations = Reservation.all
+    elsif !current_user.client.nil?
+      @reservations = Reservation.where('client_id = ?', current_user.client.id)
     else
-      redirect_to(root_path)
+      redirect_to(new_client_path)
     end
   end
+
 
   # GET /reservations/1
   # GET /reservations/1.json
   def show
-    @boxes = Box.where('state = 0')
-    @boats = Boat.where('client_id = ?', current_user.client.id)
   end
 
   # GET /reservations/new
   def new
-    if !current_user.client.nil?
+    if can? :new, Reservation
       @reservation = Reservation.new
       @boxes = Box.where('state = 0')
-      @boats = Boat.where('client_id = ?', current_user.client.id)
+      # @boats = Boat.where('client_id = ?', current_user.client.id)
     else
       redirect_to(new_client_path)
     end
@@ -38,7 +33,6 @@ class ReservationsController < ApplicationController
   # GET /reservations/1/edit
   def edit
     @boxes = Box.where('state = 0')
-    @boats = Boat.where('client_id = ?', current_user.client.id)
   end
 
   # POST /reservations

@@ -12,18 +12,13 @@
   <% end %>
 
   <div class="form-group col-md-6">
-    <%= form.label :Cliente %>
-    <%= form.hidden_field :client_id, id: :reservation_client_id, value: current_user.client.id %>
-    <%= form.text_field :client_name, value: current_user.name, class: 'form-control form-control-sm', readonly: true %>
+    <%= form.label "Cliente nro" %>
+    <%= form.text_field :client_id, class: 'form-control form-control-sm' %>
   </div>
 
   <div class="form-group col-md-6">
     <%= form.label :Box%>
     <%= form.collection_select :box_id, @boxes, :id, :descripcion, {prompt: 'Seleccione un Box'},{:class => "form-control form-control-sm"} %>
-  </div>
-  <div class="form-group col-md-6">
-    <%= form.label :Lancha %>
-    <%= form.collection_select :boat_id, @boats, :id, :nombre, {prompt: 'Seleccione un opcion'},{:class => "form-control form-control-sm"} %>
   </div>
 
   <div class="form-group col-md-6">
@@ -39,7 +34,7 @@
   <% if can? :edit, Reservation %>
     <div class="form-group col-md-6">  
       <%= form.label :estado %>
-      <%= form.number_field :estado, id: :reservation_estado %>
+      <%= form.select(:estado, options_for_select([["Pendiente",0], ["Aprobado",1], ["Cancelado",2]], selected: @reservation.estado), {prompt: 'Estados'},  {:class => 'form-control form-control-sm' }) %>
     </div>
   <% end %>
 

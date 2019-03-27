@@ -14,7 +14,11 @@ class BoxesController < ApplicationController
 
   # GET /boxes/new
   def new
-    @box = Box.new
+    if can? :new, Box
+      @box = Box.new
+    else
+      redirect_to(boxes_path)
+    end
   end
 
   # GET /boxes/1/edit
