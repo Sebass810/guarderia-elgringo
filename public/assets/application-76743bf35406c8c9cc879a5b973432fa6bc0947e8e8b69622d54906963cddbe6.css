@@ -1,0 +1,42 @@
+/* line 4, C:/Sites/gelgringo-reservas-ruby/app/assets/stylesheets/welcome.scss */
+.button {
+  padding: 0;
+}
+
+/* line 7, C:/Sites/gelgringo-reservas-ruby/app/assets/stylesheets/welcome.scss */
+.button li {
+  display: inline;
+}
+
+/* line 13, C:/Sites/gelgringo-reservas-ruby/app/assets/stylesheets/welcome.scss */
+.button li a {
+  font-family: Arial;
+  font-size: 11px;
+  text-decoration: none;
+  float: left;
+  padding: 10px;
+  background-color: #2175bc;
+  color: #fff;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+.grad{
+	background: #D3CCE3;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
