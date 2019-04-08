@@ -1,0 +1,74 @@
+<%= form_with(model: descent_client, local: true) do |form| %>
+  <% if descent_client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(descent_client.errors.count, "error") %> prohibited this descent_client from being saved:</h2>
+
+      <ul>
+      <% descent_client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label :Nro_cliente %>
+      <%= form.text_field :client_id, id: :descent_client_client_id, class: 'form-control', autofocus: true %>
+    </div>
+    <div class="col-6">
+      <%= form.label :Nombre %>
+      <%= form.text_field :client_nombre, id: :descent_client_client_nombre, class: 'form-control', readonly: true %>
+    </div>
+    <div class="col-2">
+      <%= form.label :DNI %>
+      <%= form.text_field :client_dni, id: :descent_client_client_dni, class: 'form-control', readonly: true %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-2">
+      <%= form.label :Nro_bote %>
+      <%= form.text_field :boat_id, id: :descent_client_boat_id, class: 'form-control' %>
+    </div>
+    <div class="col-4">
+      <%= form.label :Nombre %>
+      <%= form.text_field :boat_id, id: :descent_client_boat_nombre, class: 'form-control', readonly: true %>
+    </div>
+    <div class="col-3">
+      <%= form.label :Nro_matricula %>
+      <%= form.text_field :boat_id, id: :descent_client_boat_matricula, class: 'form-control', readonly: true %>
+    </div>
+    <div class="col-3">
+      <%= form.label :Nro_motor %>
+      <%= form.text_field :boat_id, id: :descent_client_boat_motor, class: 'form-control', readonly: true %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label :Nro_persona_permitida %>
+      <%= form.text_field :enable_person_id, id: :descent_client_enable_person_id, class: 'form-control' %>
+    </div>
+    <div class="col-6">
+      <%= form.label :Nombre %>
+      <%= form.text_field :client_nombre, id: :descent_client_enable_person_nombre, class: 'form-control', readonly: true %>
+    </div>
+    <div class="col-2">
+      <%= form.label :DNI %>
+      <%= form.text_field :client_dni, id: :descent_client_enable_person_dni, class: 'form-control', readonly: true %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-3">
+      <%= form.label :fecha %>
+      <%= form.date_field :fecha, id: :descent_client_fecha, class: 'form-control', value: Date.today, readonly: true %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

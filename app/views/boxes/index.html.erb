@@ -9,7 +9,7 @@
   <% @boxes.each do |box| %>
     <div class="col-3 text-center">
       <div class="card border-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header"><%= box.id %></div>
+
         <div class="card-body text-primary">
           <h5 class="card-title"><%= box.tamano %></h5>
           <p class="card-text"><%= box.descripcion %></p>
@@ -23,8 +23,10 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= link_to 'Mostrar', box, class: 'btn btn-outline-primary btn-sm' %>
-              <% if can? :update, Box %>
-                <%= link_to 'Reservar', new_reservation_path, class: 'btn btn-outline-secondary btn-sm' %>
+              <% if current_user.user_type != 'admin' %>
+                <% if box.state != 1 %>
+                  <%= link_to 'Reservar', new_reservation_path, class: 'btn btn-outline-secondary btn-sm' %>
+                <% end %>
               <% end %>
             </li>
             <li class="list-group-item">

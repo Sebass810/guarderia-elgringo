@@ -4,28 +4,20 @@ class Ability
   def initialize(user)
     if user.present?
       if user.user_type == 'admin'
-        can [:manage], Box
         can [:manage], User
-        can [:manage], Client
-        can [:manage], Boat
-        can [:manage], Reservation
-      elsif user.user_type == 'operador'
-        can [:manage], Boat
-        can [:manage], Reservation
-        can [:manage], EnablePerson
-        can [:manage], Client
         can [:manage], Box
-        can [:new], User
-        can [:edit], User
-        can [:destroy], User
-      elsif user.user_type == 'user'
-        can [:update], Box
-        can [:edit], EnablePerson
+        can [:manage], Client
+        can [:manage], EnablePerson
+        can [:manage], Reservation
+        can [:manage], Boat
+      elsif user.user_type == 'operador'
+        can [:manage], Box
         can [:new], Reservation
-        cannot [:new], Box
-        cannot [:edit], Box
-        cannot [:destroy], Box
-        cannot [:read], Client
+        can [:update], EnablePerson
+      elsif user.user_type == 'user' and !user.client.nil?
+        can [:new], Reservation
+        can [:manage], Boat
+        can [:manage], EnablePerson
       end
     end
     # if user.present?  # additional permissions for logged in users (they can manage their posts)

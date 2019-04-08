@@ -1,19 +1,23 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :set_user, only: [:show_user]
   # GET /clients
   # GET /clients.json
   def index
-    if can? :read, Client
+    if current_user.user_type == 'admin' or current_user.user_type == 'operador'
       @clients = Client.all
     else
-      redirect_to(user_path(current_user.id))
+      redirect_to(root_path)
     end
   end
 
   # GET /clients/1
   # GET /clients/1.json
   def show
+  end
+
+  def show_user
   end
 
   # GET /clients/new
@@ -29,7 +33,6 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
-
     respond_to do |format|
       if @client.save
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
@@ -71,8 +74,17 @@ class ClientsController < ApplicationController
       @client = Client.find(params[:id])
     end
 
+    def set_user
+      @user = User.where('id = ? and user_type = ? ',params[:id], 'user')
+      if @user[0].nil?
+        @user = User.new
+      else
+        @user = @user[0]
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:user_id, :nombre, :apellido, :dni, :TelǸfono, :celular, :estado)
+      params.require(:client).permit(:user_id, :nombre, :apellido, :dni, :telefono, :celular, :estado)
     end
 end

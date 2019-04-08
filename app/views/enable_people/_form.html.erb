@@ -11,32 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :clients_id %>
-    <%= form.text_field :client_id, id: :enable_person_clients_id %>
+  <div class="row form-group">
+    <div class="col-6">
+      <%= form.label 'Cliente' %>
+      <%= form.hidden_field :client_id, id: :enable_person_client_id, value: current_user.client.id %>
+      <%= form.text_field :client_name, id: :enable_person_client_name, value: current_user.client.nombre + ' ' + current_user.client.apellido, class: 'form-control', readonly: true %>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label 'Nombre'%>
+      <%= form.text_field :nombre, id: :enable_person_nombre, class: 'form-control' %>
+    </div>
+
+    <div class="col-4">
+      <%= form.label :apellido %>
+      <%= form.text_field :apellido, id: :enable_person_apellido, class: 'form-control' %>
+    </div>
+
+    <div class="col-4">
+      <%= form.label :dni %>
+      <%= form.text_field :dni, id: :enable_person_dni, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre, id: :enable_person_nombre %>
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label :estado %>
+      <%= form.select(:estado, options_for_select([["Inhabilitado",1], ["Habilitado",0]], selected: @enable_person.estado), {prompt: 'Estados'},  {:class => 'form-control' }) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :apellido %>
-    <%= form.text_field :apellido, id: :enable_person_apellido %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dni %>
-    <%= form.text_field :dni, id: :enable_person_dni %>
-  </div>
-
-  <div class="field">
-    <%= form.label :estado %>
-    <%= form.text_field :estado, id: :enable_person_estado %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row form-group">
+    <div class="actions">
+      <%= form.submit 'Guardar', class: 'btn btn-success'%>
+    </div>
   </div>
 <% end %>

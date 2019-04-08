@@ -17,7 +17,7 @@ class EnablePeopleControllerTest < ActionDispatch::IntegrationTest
 
   test "should create enable_person" do
     assert_difference('EnablePerson.count') do
-      post enable_people_url, params: { enable_person: { apellido: @enable_person.apellido, clients_id: @enable_person.clients_id, dni: @enable_person.dni, estado: @enable_person.estado, nombre: @enable_person.nombre } }
+      post enable_people_url, params: { enable_person: { apellido: @enable_person.apellido, client_id: @enable_person.client_id, dni: @enable_person.dni, estado: @enable_person.estado, nombre: @enable_person.nombre } }
     end
 
     assert_redirected_to enable_person_url(EnablePerson.last)
@@ -34,7 +34,7 @@ class EnablePeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update enable_person" do
-    patch enable_person_url(@enable_person), params: { enable_person: { apellido: @enable_person.apellido, clients_id: @enable_person.clients_id, dni: @enable_person.dni, estado: @enable_person.estado, nombre: @enable_person.nombre } }
+    patch enable_person_url(@enable_person), params: { enable_person: { apellido: @enable_person.apellido, client_id: @enable_person.client_id, dni: @enable_person.dni, estado: @enable_person.estado, nombre: @enable_person.nombre } }
     assert_redirected_to enable_person_url(@enable_person)
   end
 

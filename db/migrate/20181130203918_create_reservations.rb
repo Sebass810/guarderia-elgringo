@@ -5,7 +5,7 @@ class CreateReservations < ActiveRecord::Migration[5.1]
       t.references :box, foreign_key: true
       t.date :fecha_desde
       t.date :fecha_hasta
-      t.integer :estado
+      t.integer :estado, null: false, default: 0
 
       t.timestamps
     end

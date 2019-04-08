@@ -1,0 +1,58 @@
+<%= form_with(model: descent, local: true) do |form| %>
+  <% if descent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(descent.errors.count, "error") %> prohibited this descent from being saved:</h2>
+
+      <ul>
+      <% descent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label :nombre %>
+      <%= form.text_field :nombre, id: :descent_nombre, class: 'form-control' %>
+    </div>
+
+    <div class="col-4">
+      <%= form.label :apellido %>
+      <%= form.text_field :apellido, id: :descent_apellido, class: 'form-control' %>
+    </div>
+
+    <div class="col-4">
+      <%= form.label :dni %>
+      <%= form.text_field :dni, id: :descent_dni, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label :nombre_bote %>
+      <%= form.text_field :nombre_bote, id: :descent_nombre_bote, class: 'form-control' %>
+    </div>
+
+    <div class="col-4">
+      <%= form.label :matricula_bote %>
+      <%= form.text_field :matricula_bote, id: :descent_matricula_bote, class: 'form-control' %>
+    </div>
+
+    <div class="col-4">
+      <%= form.label :motor_bote %>
+      <%= form.text_field :motor_bote, id: :descent_motor_bote, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-4">
+      <%= form.label :fecha %>
+      <%= form.date_field :fecha, id: :descent_fecha, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Confirmar', class: 'btn btn-success' %>
+  </div>
+<% end %>

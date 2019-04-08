@@ -5,6 +5,7 @@ class CreateBoats < ActiveRecord::Migration[5.1]
       t.string :nombre
       t.string :matricula
       t.string :motor
+      t.integer :estado, null: false, default: 0
 
       t.timestamps
     end

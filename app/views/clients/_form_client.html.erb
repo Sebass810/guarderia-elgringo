@@ -1,0 +1,58 @@
+<%= form_with(model: client, local: true) do |form| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+    <div class= "row">
+      <% if params[:action] != "edit"  %>
+        <div class="form-group col-md-4">
+          <%= form.label :Numero_Usuario %>
+          <%= form.text_field :user_id,  id: :client_user_id, class: "form-control"  %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+          <%= form.label :Nombre %>
+          <%= form.text_field :nombre,  id: :client_nombre, class: "form-control", readonly: true %>
+        </div>
+        <div class="form-group col-md-4" >
+          <%= form.label :Apellido %>
+          <%= form.text_field :apellido,  id: :client_apellido, class: "form-control", readonly: true %>
+        </div>
+        <div class="form-group col-md-4">    
+          <%= form.label :DNI %>
+          <%= form.text_field :dni, id: :client_dni, class: "form-control", readonly: true %>
+        </div>
+      </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <%= form.label :Teléfono %>
+        <%= form.text_field :telefono, id: :client_telefono, class:"form-control", placeholder:"telefono fijo" %>
+      </div>
+      <div class="form-group col-md-6"> 
+        <%= form.label :Celular %>
+        <%= form.text_field :celular, id: :client_celular, class:"form-control", placeholder:"número de celular" %>
+      </div>
+
+      <div class="form-group col-md-6"> 
+        <%= form.hidden_field :estado, id: :client_estado, class:"form-control", value: 1 %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-12">
+        <%= form.submit"Guardar", class: "btn btn-primary btn-block"  %>
+      </div>
+    </div>
+  </div>  
+
+<% end %>

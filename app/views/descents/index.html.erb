@@ -1,0 +1,35 @@
+<h1>Bajadas de lancha</h1>
+
+<table class="table table-hober" >
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Dni</th>
+      <th>Nombre bote</th>
+      <th>Matricula bote</th>
+      <th>Motor bote</th>
+      <th>Fecha</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @descents.each do |descent| %>
+      <tr>
+        <td><%= descent.nombre %></td>
+        <td><%= descent.apellido %></td>
+        <td><%= descent.dni %></td>
+        <td><%= descent.nombre_bote %></td>
+        <td><%= descent.matricula_bote %></td>
+        <td><%= descent.motor_bote %></td>
+        <td><%= descent.fecha %></td>
+        <td><%= link_to 'Ver', descent %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo', new_descent_path, class: 'btn btn-success' %>

@@ -1,19 +1,13 @@
 class BoatsController < ApplicationController
   before_action :set_boat, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /boats
   # GET /boats.json
   def index
-    if user_signed_in?
-      if can? :manage, Boat
-        @boats = Boat.all
-      elsif !current_user.client.nil?
-        @boats = Boat.where('client_id = ?', current_user.client.id)
-      else
-        redirect_to(new_client_path)
-      end
-    else
-      redirect_to(root_path)
+    if current_user.user_type == 'admin' or current_user.user_type == 'operador'
+      @boats = Boat.all
+    elsif can? :manage, Boat and current_user.user_type == 'user'
+      @boats = Boat.where('client_id = ?', current_user.client.id)
     end
   end
 

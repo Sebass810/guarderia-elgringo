@@ -1,6 +1,10 @@
 <h1>Modificar Lanchas</h1>
 
-<%= render 'form', boat: @boat %>
+<% if current_user.user_type == 'user' and !current_user.client.nil? %>
+	<%= render 'form', boat: @boat %>
+<% elsif current_user.user_type == 'operador' or current_user.user_type == 'admin' %>
+	<%= render 'form_boat', boat: @boat %>
+<% end %>
 
-<%= link_to 'Mostrar', @boat %> |
-<%= link_to 'Volver', boats_path %>
+<%= link_to 'Mostrar', @boat, class: 'btn btn-info' %>
+<%= link_to 'Volver', boats_path, class: 'btn btn-secondary' %>

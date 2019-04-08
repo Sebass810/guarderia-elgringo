@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @descent_client.client %>
+</p>
+
+<p>
+  <strong>Boat:</strong>
+  <%= @descent_client.boat %>
+</p>
+
+<p>
+  <strong>Enable person:</strong>
+  <%= @descent_client.enable_person %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @descent_client.fecha %>
+</p>
+
+<%= link_to 'Edit', edit_descent_client_path(@descent_client) %> |
+<%= link_to 'Back', descent_clients_path %>

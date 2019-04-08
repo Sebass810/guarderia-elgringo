@@ -11,15 +11,22 @@
     </div>
   <% end %>
 
-  <div class="form-group col-md-6">
+<div class="row">
+  <div class="form-group col-md-4">
     <%= form.label "Cliente nro" %>
-    <%= form.text_field :client_id, class: 'form-control form-control-sm' %>
+    <%= form.text_field :client_id, class: 'form-control', value: current_user.client.id, readonly: true %>
   </div>
+  <div class="form-group col-md-5">
+      <%= form.label "Nombre" %>
+      <%= form.text_field :client_name, class: 'form-control', value: current_user.client.nombre + ' ' + current_user.client.apellido, readonly: true %>
+  </div>
+  <div class="form-group col-md-3">
+    <%= form.label :Box %>
+    <%= form.collection_select :box_id, @boxes, :id, :id, {prompt: 'Seleccione un Box'},{:class => "form-control"} %>
+  </div>
+</div>
 
-  <div class="form-group col-md-6">
-    <%= form.label :Box%>
-    <%= form.collection_select :box_id, @boxes, :id, :descripcion, {prompt: 'Seleccione un Box'},{:class => "form-control form-control-sm"} %>
-  </div>
+<div class="row">
 
   <div class="form-group col-md-6">
     <%= form.label :fecha_desde %>
@@ -30,7 +37,7 @@
     <%= form.label :fecha_hasta %>
     <%= form.date_field :fecha_hasta, id: :fecha_hasta, class: 'form-control form-control-sm' %>
   </div>
-
+</div>
   <% if can? :edit, Reservation %>
     <div class="form-group col-md-6">  
       <%= form.label :estado %>

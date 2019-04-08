@@ -5,7 +5,7 @@ class CreateEnablePeople < ActiveRecord::Migration[5.1]
       t.string :nombre
       t.string :apellido
       t.string :dni
-      t.string :estado
+      t.integer :estado, null: false, default: 0
 
       t.timestamps
     end

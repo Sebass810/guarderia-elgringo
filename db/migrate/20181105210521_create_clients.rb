@@ -4,9 +4,9 @@ class CreateClients < ActiveRecord::Migration[5.1]
       t.string :nombre
       t.string :apellido
       t.string :dni
-      t.string :TelǸfono
+      t.string :telefono
       t.string :celular
-      t.string :estado
+      t.string :estado, null: false, default: 0
 
       t.timestamps
     end

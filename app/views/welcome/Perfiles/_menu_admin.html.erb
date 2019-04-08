@@ -11,7 +11,14 @@
   <li class="nav-item">
     <%= link_to 'Box', boxes_path, class: 'nav-link' %>
   </li>
-  <li class="nav-item">
-    <%= link_to 'Operador', boxes_path,class: 'nav-link' %>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Reportes
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <%= link_to 'Lista de Bajadas', descents_path, class: 'dropdown-item' %>
+      <%= link_to 'Bajadas de clientes', descent_clients_path, class: 'dropdown-item' %>
+    </div>
   </li>
 </ul>

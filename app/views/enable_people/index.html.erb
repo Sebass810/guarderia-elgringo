@@ -1,5 +1,8 @@
-<h1>Personas autorizadas</h1>
-<table class="table table-hover">
+<p id="notice"><%= notice %></p>
+
+<h1>Enable People</h1>
+
+<table class="table table-hober">
   <thead>
     <tr>
       <th>Cliente</th>
@@ -14,14 +17,22 @@
   <tbody>
     <% @enable_people.each do |enable_person| %>
       <tr>
-        <td><%= enable_person.client.nombre %></td>
+        <td><%= enable_person.client.nombre + ' ' + enable_person.client.apellido %></td>
         <td><%= enable_person.nombre %></td>
         <td><%= enable_person.apellido %></td>
         <td><%= enable_person.dni %></td>
-        <td><%= enable_person.estado %></td>
-        <td><%= link_to 'Show', enable_person, class: 'btn btn-sm btn-outline-info' %></td>
-        <td><%= link_to 'Edit', edit_enable_person_path(enable_person), class: 'btn btn-sm btn-outline-success' %></td>
-        <td><%= link_to 'Destroy', enable_person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %></td>
+        <td>
+          <% case enable_person.estado %>
+            <% when 0 %>
+              <p><span class="badge badge-info">Habilitado</span></p>
+            <% when 1 %>
+              <p><span class="badge badge-danger">Inhabilitado</span></p>
+          <% end %>
+
+        </td>
+        <td><%= link_to 'Ver', enable_person, class: 'btn btn-success' %></td>
+        <td><%= link_to 'Editar', edit_enable_person_path(enable_person), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Borrar', enable_person, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +40,6 @@
 
 <br>
 
-<%= link_to 'New Enable Person', new_enable_person_path %>
+<% if can? :manage, EnablePerson%>
+  <%= link_to 'Nueva Persona habilitada', new_enable_person_path, class: 'btn btn-outline-success' %>
+<% end %>

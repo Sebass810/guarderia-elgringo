@@ -32,5 +32,6 @@
     </table>
     </div>
 
-
-<%= link_to 'Agregar Lancha', new_boat_path %>
+<% if can? :new, Boat %>
+  <%= link_to 'Agregar Lancha', new_boat_path %>
+<% end %>

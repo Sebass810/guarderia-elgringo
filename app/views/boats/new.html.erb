@@ -1,6 +1,10 @@
 <div class= "container-fluid text-center">
 <h1>Nueva Lancha</h1>
 </div>
-<%= render 'form', boat: @boat %>
+<% if current_user.user_type == 'user' and !current_user.client.nil? %>
+	<%= render 'form', boat: @boat %>
+<% elsif current_user.user_type == 'operador' or current_user.user_type == 'admin' %>
+	<%= render 'form_boat', boat: @boat %>
+<% end %>
 
-<%= link_to 'Volver', boats_path %>
+<%= link_to 'Volver', boats_path, class: 'btn btn-secondary' %>

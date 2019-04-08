@@ -1,0 +1,29 @@
+<h1>Bajadas de clientes</h1>
+
+<table class="table table-hober">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Lancha</th>
+      <th>Persona habilitada</th>
+      <th>Fecha</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @descent_clients.each do |descent_client| %>
+      <tr>
+        <td><%= descent_client.client.nombre %></td>
+        <td><%= descent_client.boat.nombre %></td>
+        <td><%= descent_client.enable_person.nombre %></td>
+        <td><%= descent_client.fecha %></td>
+        <td><%= link_to 'Ver', descent_client %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo', new_descent_client_path, class: 'btn btn-success' %>

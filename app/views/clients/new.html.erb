@@ -1,5 +1,11 @@
 <div class= "container-fluid text-center">
-<h1>Nuevo Cliente</h1>
+	<h1>Nuevo Cliente</h1>
 </div>
-<%= render 'form', client: @client %>
+
+<% if current_user.user_type == 'user' %>
+	<%= render 'form', client: @client %>
+<% elsif current_user.user_type == 'operador' or current_user.user_type == 'admin' %>
+	<%= render 'form_client', client: @client %>
+<% end %>
+
 <%= link_to 'Volver', clients_path %>

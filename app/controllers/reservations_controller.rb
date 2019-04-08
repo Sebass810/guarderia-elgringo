@@ -4,13 +4,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    if can? :manage, Reservation
       @reservations = Reservation.all
-    elsif !current_user.client.nil?
-      @reservations = Reservation.where('client_id = ?', current_user.client.id)
-    else
-      redirect_to(new_client_path)
-    end
   end
 
 
@@ -24,8 +18,10 @@ class ReservationsController < ApplicationController
     if can? :new, Reservation
       @reservation = Reservation.new
       @boxes = Box.where('state = 0')
-      # @boats = Boat.where('client_id = ?', current_user.client.id)
-    else
+      if current_user.user_type == 'user'
+        @client = Client.where('id = ?', current_user.client.id)
+      end
+    elsif current_user.user_type == 'user'
       redirect_to(new_client_path)
     end
   end
@@ -39,6 +35,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    # raise
     respond_to do |format|
       if @reservation.save
         @reservation.box.state = 1
@@ -47,7 +44,9 @@ class ReservationsController < ApplicationController
         format.json { render :show, status: :created, location: @reservation }
       else
         @boxes = Box.where('state = 0')
-        @boats = Boat.where('client_id = ?', current_user.client.id)
+        if current_user.user_type == 'user'
+          @client = Client.where('id = ?', current_user.client.id)
+        end
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end

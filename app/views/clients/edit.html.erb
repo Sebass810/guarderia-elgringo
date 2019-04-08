@@ -1,6 +1,11 @@
 <h1>Modificar Cliente</h1>
 
-<%= render 'form', client: @client %>
+<% if current_user.user_type == 'user' and !current_user.client.nil? %>
+	<%= render 'form', client: @client %>
+<% elsif current_user.user_type == 'operador' or current_user.user_type == 'admin' %>
+	<%= render 'form_client', client: @client %>
+<% end %>
+
 
 <%= link_to 'Mostrar', @client %> |
 <%= link_to 'Volver', clients_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  apellido: MyString
+  dni: MyString
+  nombre_bote: MyString
+  matricula_bote: MyString
+  motor_bote: MyString
+  fecha: 2019-04-06
+
+two:
+  nombre: MyString
+  apellido: MyString
+  dni: MyString
+  nombre_bote: MyString
+  matricula_bote: MyString
+  motor_bote: MyString
+  fecha: 2019-04-06

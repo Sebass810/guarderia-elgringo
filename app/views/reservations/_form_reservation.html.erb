@@ -1,0 +1,53 @@
+<%= form_with(model: reservation, local: true) do |form| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+     <% reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label "Cliente nro" %>
+      <%= form.text_field :client_id, class: 'form-control form-control-sm' %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label "Cliente nombre" %>
+      <%= form.text_field :client_name, class: 'form-control form-control-sm', readonly: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :Box %>
+      <%= form.collection_select :box_id, @boxes, :id, :id, {prompt: 'Seleccione un Box'},{:class => "form-control form-control-sm"} %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :fecha_desde %>
+      <%= form.date_field :fecha_desde, id: :fecha_desde, class: 'form-control form-control-sm' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :fecha_hasta %>
+      <%= form.date_field :fecha_hasta, id: :fecha_hasta, class: 'form-control form-control-sm' %>
+    </div>
+  </div>
+
+  <% if can? :edit, Reservation %>
+    <div class="form-group col-md-6">  
+      <%= form.label :estado %>
+      <%= form.select(:estado, options_for_select([["Pendiente",0], ["Aprobado",1], ["Cancelado",2]], selected: @reservation.estado), {prompt: 'Estados'},  {:class => 'form-control form-control-sm' }) %>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= form.submit 'Guardar', class: "btn btn-primary"  %>
+  </div>
+<% end %>

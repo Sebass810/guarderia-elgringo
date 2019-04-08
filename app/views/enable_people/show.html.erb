@@ -1,8 +1,8 @@
-
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Clients:</strong>
-  <%= @enable_person.client.nombre %>
+  <strong>Client:</strong>
+  <%= @enable_person.client.nombre + ' ' + @enable_person.client.apellido %>
 </p>
 
 <p>
@@ -22,8 +22,13 @@
 
 <p>
   <strong>Estado:</strong>
-  <%= @enable_person.estado %>
+  <% case @enable_person.estado %>
+    <% when 0 %>
+      <span class="badge badge-info">Habilitado</span>
+    <% when 1 %>
+      <span class="badge badge-danger">Inhabilitado</span>
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_enable_person_path(@enable_person) %> |
-<%= link_to 'Back', enable_people_path %>
+<%= link_to 'Editar', edit_enable_person_path(@enable_person), class: 'btn btn-info' %>
+<%= link_to 'volver', enable_people_path, class: 'btn btn-secondary' %>

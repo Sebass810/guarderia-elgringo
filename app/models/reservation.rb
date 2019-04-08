@@ -2,7 +2,9 @@ class Reservation < ApplicationRecord
   belongs_to :client
   belongs_to :box
   
-  # validates :fecha_desde,less_than: :fecha_hasta
+  # validates :fecha_desde, presence: true
+  # validates :fecha_hasta, presence: true
+  
   validate :expiration_date_cannot_be_in_the_past
   validate :fecha_desde_fecha_hasta
   
@@ -13,7 +15,7 @@ class Reservation < ApplicationRecord
   end
 
   def fecha_desde_fecha_hasta
-    if fecha_hasta < fecha_desde
+    if self.fecha_hasta < self.fecha_desde
       errors.add(:fecha_hasta, "La fecha Hasta tiene que se mayor que Fecha Desde")
     end
   end
