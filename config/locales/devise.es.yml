@@ -102,3 +102,10 @@ es:
         blank: "El campo no puede estar en blanco"
         not_a_number: "el campo solo admite numeros"
         not_an_integer: "Solo numeros enteros"
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      long: "%A %d de %B"
+      month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+      abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+      day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]

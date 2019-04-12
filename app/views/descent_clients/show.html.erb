@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Client:</strong>
-  <%= @descent_client.client %>
+  <strong>Cliente:</strong>
+  <%= @descent_client.client.apellido + ', ' + @descent_client.client.nombre %>
 </p>
 
 <p>
   <strong>Boat:</strong>
-  <%= @descent_client.boat %>
+  <%= @descent_client.boat.nombre %>
 </p>
 
 <p>
-  <strong>Enable person:</strong>
-  <%= @descent_client.enable_person %>
+  <strong>Persona permitida:</strong>
+  <%= @descent_client.enable_person.apellido + ', ' + @descent_client.enable_person.nombre %>
 </p>
 
 <p>
@@ -20,5 +20,4 @@
   <%= @descent_client.fecha %>
 </p>
 
-<%= link_to 'Edit', edit_descent_client_path(@descent_client) %> |
-<%= link_to 'Back', descent_clients_path %>
+<%= link_to 'Volver', descent_clients_path, class: 'btn btn-secondary' %>

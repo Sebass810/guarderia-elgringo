@@ -66,6 +66,7 @@ gem 'devise'
 
 gem 'prawn'
 gem 'prawn-table'
+
 gem "cancan"
 gem 'jquery-rails'
 

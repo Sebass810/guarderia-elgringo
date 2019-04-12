@@ -1,4 +1,5 @@
 class DescentClientsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_descent_client, only: [:show, :edit, :update, :destroy]
   before_action :set_cliente, only: [:show_cliente]
   before_action :set_boat, only: [:show_boat]
@@ -6,7 +7,13 @@ class DescentClientsController < ApplicationController
   # GET /descent_clients
   # GET /descent_clients.json
   def index
-    @descent_clients = DescentClient.all
+    @user_type = current_user.user_type
+    if @user_type == 'admin' or @user_type == 'operador'
+      @descent_clients = DescentClient.all
+    elsif @user_type == 'user' and !current_user.client.nil?
+      @descent_clients = DescentClient.where('client_id = ? ', current_user.client.id)
+    end
+
   end
 
   # GET /descent_clients/1
