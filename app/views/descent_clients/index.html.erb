@@ -1,5 +1,9 @@
 <h1>Bajadas de clientes</h1>
-<%= link_to 'Nuevo', new_descent_client_path, class: 'btn btn-success' %>
+
+<% if current_user.user_type != 'user' %>
+  <%= link_to 'Nuevo', new_descent_client_path, class: 'btn btn-success' %>
+<% end %>
+
 <table class="table table-hober">
   <thead>
     <tr>
