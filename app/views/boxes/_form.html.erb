@@ -2,9 +2,9 @@
   <% if box.errors.any? %>
     <div id="error_explanation">
       <% if box.errors.count > 1 %> 
-        <h2><%= Se generaron (box.errors.count, "errores") %> </h2>
+        <h2>Se generaron <%= pluralize(box.errors.count, "errores") %> </h2>
       <% else %> 
-        <h2><%= Se genero (box.errors.count, "error") %> </h2>
+        <h2>Se genero <%= pluralize(box.errors.count, "error") %> </h2>
       <% end %> 
 
       <ul>

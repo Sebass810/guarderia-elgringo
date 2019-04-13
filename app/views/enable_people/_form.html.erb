@@ -2,9 +2,9 @@
   <% if enable_person.errors.any? %>
     <div id="error_explanation">
       <% if enable_person.errors.count > 1%>
-        <h2><%= Se generaron (enable_person.errors.count, "errores") %></h2>
+        <h2>Se generaron <%= pluralize(enable_person.errors.count, "errores") %></h2>
       <% else %>
-        <h2><%= Se genero (enable_person.errors.count, "error") %></h2>
+        <h2>Se genero <%= pluralize(enable_person.errors.count, "error") %></h2>
       <% end %>
 
       <ul>

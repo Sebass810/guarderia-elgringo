@@ -2,9 +2,9 @@
   <% if client.errors.any? %>
     <div id="error_explanation">
       <% if client.errors.count > 1%>
-        <h2><%= Se generaron (client.errors.count, "errores") %></h2>
+        <h2>Se generaron <%= pluralize(client.errors.count, "errores") %></h2>
       <% else %>
-        <h2><%= Se genero (client.errors.count, "error") %></h2>
+        <h2>Se genero <%= pluralize(client.errors.count, "error") %></h2>
       <% end %>
 
       <ul>

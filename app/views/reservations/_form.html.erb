@@ -2,9 +2,9 @@
   <% if reservation.errors.any? %>
     <div id="error_explanation">
       <% if reservation.errors.count > 1 %>
-        <h2><%= Se generaron (reservation.errors.count, "errores") %></h2>
+        <h2>Se generaron <%= pluralize(reservation.errors.count, "errores") %></h2>
       <% else %>
-        <h2><%= Se genero (reservation.errors.count, "error") %></h2>
+        <h2>Se genero <%= pluralize(reservation.errors.count, "error") %></h2>
       <% end %>
 
       <ul>

@@ -2,9 +2,9 @@
   <% if descent_client.errors.any? %>
     <div id="error_explanation">
       <% if descent_client.errors.count > 1%>
-        <h2><%= Se generaron (descent_client.errors.count, "errores") %></h2>
+        <h2>Se generaron <%= pluralize(descent_client.errors.count, "errores") %></h2>
       <% else %>
-        <h2><%= Se genero (descent_client.errors.count, "error") %></h2>
+        <h2>Se genero <%= pluralize(descent_client.errors.count, "error") %></h2>
       <% end %>
 
       <ul>
