@@ -46,7 +46,7 @@ class DescentClientsController < ApplicationController
 
     respond_to do |format|
       if @descent_client.save
-        format.html { redirect_to @descent_client, notice: 'Descent client was successfully created.' }
+        format.html { redirect_to @descent_client, notice: 'Registro creado satisfactoriamente.' }
         format.json { render :show, status: :created, location: @descent_client }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class DescentClientsController < ApplicationController
   def update
     respond_to do |format|
       if @descent_client.update(descent_client_params)
-        format.html { redirect_to @descent_client, notice: 'Descent client was successfully updated.' }
+        format.html { redirect_to @descent_client, notice: 'Registro actualizado con exito.' }
         format.json { render :show, status: :ok, location: @descent_client }
       else
         format.html { render :edit }
@@ -74,7 +74,7 @@ class DescentClientsController < ApplicationController
   def destroy
     @descent_client.destroy
     respond_to do |format|
-      format.html { redirect_to descent_clients_url, notice: 'Descent client was successfully destroyed.' }
+      format.html { redirect_to descent_clients_url, notice: 'Registro eliminado.' }
       format.json { head :no_content }
     end
   end

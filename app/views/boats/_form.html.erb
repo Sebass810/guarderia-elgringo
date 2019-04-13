@@ -1,8 +1,11 @@
 <%= form_with(model: boat, local: true) do |form| %>
   <% if boat.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(boat.errors.count, "error") %> prohibited this boat from being saved:</h2>
-
+      <% if boat.errors.count > 1 %>
+        <h2>Se generaron <%= pluralize(boat.errors.count, "errores") %> :</h2>
+      <% else %>
+        <h2>Se genero <%= pluralize(boat.errors.count, "error") %> :</h2>
+      <% end %>
       <ul>
       <% boat.errors.full_messages.each do |message| %>
         <li><%= message %></li>

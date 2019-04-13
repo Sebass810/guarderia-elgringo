@@ -1,7 +1,11 @@
 <%= form_with(model: box, local: true) do |form| %>
   <% if box.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(box.errors.count, "error") %> prohibited this box from being saved:</h2>
+      <% if box.errors.count > 1 %> 
+        <h2><%= Se generaron (box.errors.count, "errores") %> </h2>
+      <% else %> 
+        <h2><%= Se genero (box.errors.count, "error") %> </h2>
+      <% end %> 
 
       <ul>
       <% box.errors.full_messages.each do |message| %>

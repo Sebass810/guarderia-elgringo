@@ -1,7 +1,11 @@
 <%= form_with(model: descent_client, local: true) do |form| %>
   <% if descent_client.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(descent_client.errors.count, "error") %> prohibited this descent_client from being saved:</h2>
+      <% if descent_client.errors.count > 1%>
+        <h2><%= Se generaron (descent_client.errors.count, "errores") %></h2>
+      <% else %>
+        <h2><%= Se genero (descent_client.errors.count, "error") %></h2>
+      <% end %>
 
       <ul>
       <% descent_client.errors.full_messages.each do |message| %>

@@ -32,7 +32,7 @@ class EnablePeopleController < ApplicationController
 
     respond_to do |format|
       if @enable_person.save
-        format.html { redirect_to @enable_person, notice: 'Enable person was successfully created.' }
+        format.html { redirect_to @enable_person, notice: 'Se agrego persona habilitada.' }
         format.json { render :show, status: :created, location: @enable_person }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class EnablePeopleController < ApplicationController
   def update
     respond_to do |format|
       if @enable_person.update(enable_person_params)
-        format.html { redirect_to @enable_person, notice: 'Enable person was successfully updated.' }
+        format.html { redirect_to @enable_person, notice: 'Actualizacion satisfactoria.' }
         format.json { render :show, status: :ok, location: @enable_person }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class EnablePeopleController < ApplicationController
   def destroy
     @enable_person.destroy
     respond_to do |format|
-      format.html { redirect_to enable_people_url, notice: 'Enable person was successfully destroyed.' }
+      format.html { redirect_to enable_people_url, notice: 'El registro fue dado de baja.' }
       format.json { head :no_content }
     end
   end

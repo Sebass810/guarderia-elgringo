@@ -1,5 +1,7 @@
 # Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
 
+
+
 es:
   activerecord:
     errors:
@@ -14,29 +16,10 @@ es:
               invalid: "Contraseña incorrecta"
             password_confirmation:
               confirmation: "Las contraseñas deben coincidir"
-        tratamiento:
+        reservation:
           attributes:
-            socio:
-              required: "Numero de beneficiario incorrecto"
-            fin:
-              blank: "Debe seleccionar una opcion"
-        socio:
-          attributes:
-            documento_nro:
-              greater_than: "No puede ser cero o contener un valor negativo"
-              less_than_or_equal_to: "Error"
-            documento_tipo:
-              blank: "Debe seleccionar una opcion"
-        medic:
-          attributes:
-            provincial:
-              greater_than: "No puede ser cero contener un valor negativo"
-              less_than_or_equal_to: "Error"
-            nacional:
-              greater_than: "No puede ser cero contener un valor negativo"
-              less_than_or_equal_to: "Error"
-            province_id:
-              blank: "Debe seleccionar una opcion"
+            box:
+              required: "Debe seleccionar un box"
   devise:
     confirmations:
       confirmed: "Su cuenta ha sido confirmada."

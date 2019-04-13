@@ -28,7 +28,7 @@ class DescentsController < ApplicationController
 
     respond_to do |format|
       if @descent.save
-        format.html { redirect_to @descent, notice: 'Descent was successfully created.' }
+        format.html { redirect_to @descent, notice: 'Registro creado con exito.' }
         format.json { render :show, status: :created, location: @descent }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DescentsController < ApplicationController
   def update
     respond_to do |format|
       if @descent.update(descent_params)
-        format.html { redirect_to @descent, notice: 'Descent was successfully updated.' }
+        format.html { redirect_to @descent, notice: 'Registro actualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @descent }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class DescentsController < ApplicationController
   def destroy
     @descent.destroy
     respond_to do |format|
-      format.html { redirect_to descents_url, notice: 'Descent was successfully destroyed.' }
+      format.html { redirect_to descents_url, notice: 'Registro eliminado.' }
       format.json { head :no_content }
     end
   end
