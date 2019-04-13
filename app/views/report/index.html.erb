@@ -14,11 +14,11 @@
 			<%= form_tag estadisticas_bajadas_path(format: "pdf"), :target => '_blank', :method => :get, id: 'form-update-detalle', class: 'form-inline' do %>
 				<div class="form-group mb-2">
 					<%= label_tag 'Fecha desde' %>
-					<%= date_field_tag :fecha_desde, class: 'form-control-plaintext' %>
+					<%= date_field_tag :fecha_desde,'01/01/2014', class: 'form-control' %>
 				</div>
 				<div class="form-group mx-sm-3 mb-2">
 					<%= label_tag :fecha_hasta %>
-					<%= date_field_tag :fecha_hasta, class: 'form-control' %>
+					<%= date_field_tag :fecha_hasta, '01/01/2014', class: 'form-control form-control-sm' %>
 				</div>
 				<div class="row form-group">
 					<%= submit_tag 'Confirmar', class: 'btn btn-outline-info btn-sm mb-2', id: 'btn-confirm-update-detalle'	%>
