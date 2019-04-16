@@ -4,7 +4,15 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
+    user_type = current_user.user_type
+    if  user_type == 'admin' or user_type == 'operador'
       @reservations = Reservation.all
+    elsif user_type == 'user' and !current_user.client.nil?
+      id = current_user.client.id
+      @reservations = Reservation.where('client_id = ?', id)
+    else
+      redirect_to(root_path)
+    end
   end
 
 
@@ -38,7 +46,7 @@ class ReservationsController < ApplicationController
     # raise
     respond_to do |format|
       if @reservation.save
-        @reservation.box.state = 1
+        @reservation.box.state = 2
         @reservation.box.save
         format.html { redirect_to @reservation, notice: 'Reservación creada con exito.' }
         format.json { render :show, status: :created, location: @reservation }

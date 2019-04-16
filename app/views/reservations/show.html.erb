@@ -32,5 +32,7 @@
   <% end %>
 </p>
 
-<%= link_to 'Modificar', edit_reservation_path(@reservation) %> |
+<% if can? :edit, Reservation %>
+  <%= link_to 'Modificar', edit_reservation_path(@reservation) %> |
+<% end %>
 <%= link_to 'Volver', reservations_path %>

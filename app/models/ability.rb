@@ -13,6 +13,7 @@ class Ability
       elsif user.user_type == 'operador'
         can [:manage], Box
         can [:new], Reservation
+        can [:edit], Reservation
         can [:update], EnablePerson
       elsif user.user_type == 'user' and !user.client.nil?
         can [:new], Reservation

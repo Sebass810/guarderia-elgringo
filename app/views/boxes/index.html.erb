@@ -15,16 +15,17 @@
           <p class="card-text"><%= box.descripcion %></p>
           <% if box.state == 0 %>
               <p class="badge badge-success"><span>Libre</span></p>
-          <% else %>
+          <% elsif box.state == 1 %>
               <p class="badge badge-danger"><span>Reservado</span></p>
+          <% elsif box.state == 2 %>
+              <p class="badge badge-warning"><span>Pendiente</span></p>
           <% end %>          
         </div>
-        
-          <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= link_to 'Mostrar', box, class: 'btn btn-outline-primary btn-sm' %>
               <% if current_user.user_type != 'admin' %>
-                <% if box.state != 1 %>
+                <% if box.state == 0 %>
                   <%= link_to 'Reservar', new_reservation_path, class: 'btn btn-outline-secondary btn-sm' %>
                 <% end %>
               <% end %>

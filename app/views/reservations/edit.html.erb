@@ -1,6 +1,10 @@
-<h1>Editing Reservation</h1>
+<h1>Editar Reservacion</h1>
 
-<%= render 'form', reservation: @reservation %>
+<% if current_user.user_type == 'user' and !current_user.client.nil? %>
+	<%= render 'form', reservation: @reservation %>
+<% elsif current_user.user_type == 'operador' or current_user.user_type == 'admin' %>
+	<%= render 'form_reservation', reservation: @reservation %>
+<% end %>
 
 <%= link_to 'Mostrar', @reservation %> |
 <%= link_to 'Volver', reservations_path %>

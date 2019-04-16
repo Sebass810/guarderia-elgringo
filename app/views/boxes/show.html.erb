@@ -15,8 +15,12 @@
   		<p class="badge badge-success">Libre</p>
   	<% when 1  %>
   		<p class="badge badge-danger">Reservado</p>
+    <% when 2  %>
+      <p class="badge badge-warning">Pendiente</p>
   <% end %>
 </p>
 
-<%= link_to 'Modificar', edit_box_path(@box) %> |
+<% if can? :edit, Box %>
+  <%= link_to 'Modificar', edit_box_path(@box) %> |
+<% end %>
 <%= link_to 'Volver', boxes_path %>

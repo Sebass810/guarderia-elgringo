@@ -4,7 +4,7 @@ class ReportController < ApplicationController
   end
 
   def estadisticas_bajadas_clientes
-  	@bajadas = DescentClient.where('client_id = ?', current_user.id)
+  	@bajadas = DescentClient.where('client_id = ?', current_user.client.id)
   	respond_to do |format|
 			format.html
 			format.pdf do 
