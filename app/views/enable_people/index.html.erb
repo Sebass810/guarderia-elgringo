@@ -5,6 +5,7 @@
 <table class="table table-hober">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Cliente</th>
       <th>Nombre</th>
       <th>Apellido</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @enable_people.each do |enable_person| %>
       <tr>
+        <td><%= enable_person.id %></td>
         <td><%= enable_person.client.nombre + ' ' + enable_person.client.apellido %></td>
         <td><%= enable_person.nombre %></td>
         <td><%= enable_person.apellido %></td>

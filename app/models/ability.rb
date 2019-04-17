@@ -11,7 +11,7 @@ class Ability
         can [:manage], Reservation
         can [:manage], Boat
       elsif user.user_type == 'operador'
-        can [:manage], Box
+        can [:update], Box
         can [:new], Reservation
         can [:edit], Reservation
         can [:update], EnablePerson

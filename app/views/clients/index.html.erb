@@ -5,6 +5,7 @@
   
   <thead>
     <tr>
+      <th scope="col">Nro Cliente</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Dni</th>
@@ -18,13 +19,20 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        
+        <td><%= client.id %></td>
         <td><%= client.nombre %></td>
         <td><%= client.apellido %></td>
         <td><%= client.dni %></td>
         <td><%= client.telefono %></td>
         <td><%= client.celular %></td>
-        <td><%= client.estado %></td>
+        
+        <% case client.estado %>
+          <% when '0' %>
+            <td><p class="badge badge-warning">Inactivo</p></td>
+          <% when '1' %>
+            <td><p class="badge badge-success">Activo</p></td>
+        <% end %>
+        
         <td><%= link_to 'Mostrar', client, class: "btn btn-sm btn-outline-primary" %></button></td>
         <td><%= link_to 'Modificar', edit_client_path(client), class: "btn btn-sm btn-outline-success" %></button></td>
         <td><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Decea Eliminar el Cliente?' }, class: "btn btn-sm btn-outline-danger" %></td>
