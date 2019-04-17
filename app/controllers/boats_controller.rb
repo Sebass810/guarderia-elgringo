@@ -6,8 +6,14 @@ class BoatsController < ApplicationController
   def index
     if current_user.user_type == 'admin' or current_user.user_type == 'operador'
       @boats = Boat.all
+      if params[:matricula].present?
+        @boats = @boats.where('matricula like ?', "%#{params[:matricula]}%")
+      end
     elsif can? :manage, Boat and current_user.user_type == 'user'
       @boats = Boat.where('client_id = ?', current_user.client.id)
+      if params[:matricula].present?
+        @boats = @boats.where('matricula like ?', "%#{params[:matricula]}%")
+      end
     end
   end
 

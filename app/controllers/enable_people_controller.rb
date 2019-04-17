@@ -6,8 +6,14 @@ class EnablePeopleController < ApplicationController
   def index
     if current_user.user_type == 'admin' or current_user.user_type == 'operador'
       @enable_people = EnablePerson.all
+      if params[:dni].present?
+        @enable_people = @enable_people.where('dni like ?', "%#{params[:dni]}%")
+      end
     elsif can? :manage, EnablePerson and !current_user.client.nil?
       @enable_people = EnablePerson.where('client_id = ?', current_user.client.id)
+      if params[:dni].present?
+        @enable_people = @enable_people.where('dni like ?', "%#{params[:dni]}%")
+      end
     end
   end
 

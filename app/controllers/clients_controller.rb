@@ -7,6 +7,9 @@ class ClientsController < ApplicationController
   def index
     if current_user.user_type == 'admin' or current_user.user_type == 'operador'
       @clients = Client.all
+      if params[:dni].present?
+        @clients = @clients.where('dni like ?', "%#{params[:dni]}%")
+      end
     else
       redirect_to(root_path)
     end
