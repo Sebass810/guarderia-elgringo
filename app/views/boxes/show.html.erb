@@ -8,6 +8,13 @@
   <%= @box.tamano %>
 </p>
 
+<% if !@reservation.nil? %>
+  <p>
+    <strong>Fecha hasta:</strong>
+    <%= @reservation.fecha_hasta %>
+  </p>
+<% end %>
+
 
   <strong>Estado:</strong>
   <% case @box.state %>

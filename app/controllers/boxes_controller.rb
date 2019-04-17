@@ -10,6 +10,9 @@ class BoxesController < ApplicationController
   # GET /boxes/1
   # GET /boxes/1.json
   def show
+    if @box.state != 0
+      @reservation = Reservation.where('box_id = ?', @box.id).last
+    end
   end
 
   # GET /boxes/new
