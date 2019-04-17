@@ -9,7 +9,9 @@
   <% @boxes.each do |box| %>
     <div class="col-3 text-center">
       <div class="card border-primary mb-3" style="max-width: 18rem;">
-
+        <div class="card-header text-primary">
+          Nro Box: <%= box.id%>
+        </div>
         <div class="card-body text-primary">
           <h5 class="card-title"><%= box.tamano %></h5>
           <p class="card-text"><%= box.descripcion %></p>
