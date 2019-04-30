@@ -79,7 +79,7 @@ es:
         expired: "ha expirado, por favor vuelva a solicitarla."
         not_found: "no se ha encontrado"
         not_locked: "no estaba bloqueado."
-        not_saved: "Verifique el %{valor} ingrasado"
+        not_saved: "Verifique el valor ingrasado"
         one: "1 error impidió que este %{resource} fuese guardado:"
         other: "%{count} errores impidieron que este %{resource} fuese guardado:"
         blank: "El campo no puede estar en blanco"
