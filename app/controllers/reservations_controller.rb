@@ -1,6 +1,8 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_client, only: [:get_client]
+
   # GET /reservations
   # GET /reservations.json
   def index
@@ -36,18 +38,27 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1/edit
   def edit
-    @boxes = Box.where('state = 0')
+    @box_id = @reservation.box_id
+    @boxes = Box.where('id = ?',@box_id)
   end
 
   # POST /reservations
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    # raise
     respond_to do |format|
       if @reservation.save
-        @reservation.box.state = 2
-        @reservation.box.save
+        case @reservation.estado
+          when 0
+            @reservation.box.state = 2
+            @reservation.box.save
+          when 1
+            @reservation.box.state = 1
+            @reservation.box.save
+          when 2
+            @reservation.box.state = 0
+            @reservation.box.save
+        end
         format.html { redirect_to @reservation, notice: 'Reservación creada con exito.' }
         format.json { render :show, status: :created, location: @reservation }
       else
@@ -66,9 +77,20 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
+        case @reservation.estado
+          when 0
+          when 1
+            @reservation.box.state = 1
+            @reservation.box.save
+          when 2
+            @reservation.box.state = 0
+            @reservation.box.save
+        end
         format.html { redirect_to @reservation, notice: 'Reservación actualizada.' }
         format.json { render :show, status: :ok, location: @reservation }
       else
+        @box_id = @reservation.box_id
+        @boxes = Box.where('id = ?',@box_id)
         format.html { render :edit }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
@@ -85,10 +107,23 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def get_client
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
       @reservation = Reservation.find(params[:id])
+    end
+
+    def set_client
+      @client = Client.where('id = ? or dni like ? ',params[:id], "#{params[:id]}%")
+      if @client[0].nil?
+        @client = Client.new
+      else
+        @client = @client[0]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
