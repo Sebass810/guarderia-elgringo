@@ -1,4 +1,4 @@
-<h1>New Enable Person</h1>
+<h1>Nueva Personas Autorizadas</h1>
 
 <% if current_user.user_type == 'user' and !current_user.client.nil? %>
 	<%= render 'form', enable_person: @enable_person %>

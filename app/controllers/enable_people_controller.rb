@@ -11,6 +11,7 @@ class EnablePeopleController < ApplicationController
       end
     elsif can? :manage, EnablePerson and !current_user.client.nil?
       @enable_people = EnablePerson.where('client_id = ?', current_user.client.id)
+      @bajadas = DescentClient.select('*').where('client_id = ?', current_user.client.id).group("enable_person_id").count
       if params[:dni].present?
         @enable_people = @enable_people.where('dni like ?', "%#{params[:dni]}%")
       end

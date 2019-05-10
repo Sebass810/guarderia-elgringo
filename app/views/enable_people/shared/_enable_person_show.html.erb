@@ -1,0 +1,15 @@
+<div class="row">
+	<% @enable_people.each do |b| %>
+		<div class="col-3 text-center">
+	      <div class="card border-primary mb-3" style="max-width: 18rem;">
+	        <div class="card-header text-primary">
+	          DNI: <%= b.dni %>
+	        </div>
+	        <div class="card-body text-primary">
+	          <h5 class="card-title"><%= b.apellido + ', ' + b.nombre %></h5>
+	          <p class="card-text">Total de bajadas &nbsp<span class="badge badge-secondary"><%= bajadas[b.id] %></span></p>
+	        </div>        
+	      </div>
+	    </div>
+	<% end %>
+</div>

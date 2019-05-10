@@ -27,7 +27,8 @@
     <div class="row form-group">
       <div class="col-6">
         <%= form.label 'Numero cliente' %>
-        <%= form.text_field :client_id, id: :enable_person_client_id, class: 'form-control' %>
+        <%= form.text_field :client_id, id: :enable_person_client_id %>
+        <%= form.text_field :enable_person_client_id, id: :client_id, class: 'form-control', autofocus: :true %>
       </div>
       <div class="col-6">
         <%= form.label 'Nombre cliente' %>

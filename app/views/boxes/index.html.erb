@@ -9,11 +9,11 @@
   <% @boxes = @boxes.order(:id) %>
   <% @boxes.each do |box| %>
     <div class="col-3 text-center">
-      <div class="card border-primary mb-3" style="max-width: 18rem;">
+      <div class="card border-primary mb-4" style="max-width: 18rem;">
         <div class="card-header text-primary">
           Nro Box: <%= box.id%>
         </div>
-        <div class="card-body text-primary">
+        <div class="card-body text-secondary">
           <h5 class="card-title"><%= box.tamano %></h5>
           <p class="card-text"><%= box.descripcion %></p>
           <% if box.state == 0 %>
@@ -24,7 +24,8 @@
               <p class="badge badge-warning"><span>Pendiente</span></p>
           <% end %>          
         </div>
-        <ul class="list-group list-group-flush">
+        <div class="card-footer">
+          <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= link_to 'Mostrar', box, class: 'btn btn-outline-primary btn-sm' %>
               <% if current_user.user_type != 'admin' %>
@@ -42,7 +43,8 @@
               <% end %>
             </li>
           </ul>
-        
+        </div>
+
       </div>
     </div>
   <% end %>

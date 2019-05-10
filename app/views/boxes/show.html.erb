@@ -1,33 +1,42 @@
-<p>
-  <strong>Descripcion:</strong>
-  <%= @box.descripcion %>
-</p>
+<div class="row">
+  <div class="col-6">
+    <h2 class="h2">Datos del box</h2>
 
-<p>
-  <strong>Tamano:</strong>
-  <%= @box.tamano %>
-</p>
+    <div class="col-6">
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @box.descripcion %>
+      </p>
+    </div>
+    <div class="col-6">
+      <p>
+        <strong>Tamano:</strong>
+        <%= @box.tamano %>
+      </p>
+    </div>
 
-<% if !@reservation.nil? %>
-  <p>
-    <strong>Fecha hasta:</strong>
-    <%= @reservation.fecha_hasta %>
-  </p>
-<% end %>
+    <div class="col 6">
+      <strong>Estado:</strong>
+      <% case @box.state %>
+      	<% when 0  %>
+      		<p class="badge badge-success">Libre</p>
+      	<% when 1  %>
+      		<p class="badge badge-danger">Reservado</p>
+        <% when 2  %>
+          <p class="badge badge-warning">Pendiente</p>
+      <% end %>
+    </div>
+  </div>
 
 
-  <strong>Estado:</strong>
-  <% case @box.state %>
-  	<% when 0  %>
-  		<p class="badge badge-success">Libre</p>
-  	<% when 1  %>
-  		<p class="badge badge-danger">Reservado</p>
-    <% when 2  %>
-      <p class="badge badge-warning">Pendiente</p>
+  <% if !(@box.state == 0) and current_user.user_type == 'operador' %>
+    <div class="col-6">
+      <h2 class="h2">Datos del cliente</h2>
+      <%= render 'reserva', box: @box %>
+    </div>
   <% end %>
-</p>
-
+</div>
 <% if can? :edit, Box %>
-  <%= link_to 'Modificar', edit_box_path(@box) %> |
+  <%= link_to 'Modificar', edit_box_path(@box), class: 'btn btn-success' %> 
 <% end %>
-<%= link_to 'Volver', boxes_path %>
+<%= link_to 'Volver', boxes_path, class: 'btn btn-secondary' %>

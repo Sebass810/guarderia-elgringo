@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   has_one :client
 
+  validates :name, :surname, :dni, presence: true
+
 end
   

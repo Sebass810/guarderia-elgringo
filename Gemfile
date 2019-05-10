@@ -71,3 +71,4 @@ gem "cancan"
 gem 'jquery-rails'
 
 gem 'jquery-turbolinks'
+gem 'googlecharts'

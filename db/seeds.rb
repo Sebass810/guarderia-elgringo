@@ -12,7 +12,7 @@ users = [
 		name: 'Admin',
 		surname: 'Admin',
 		dni: '30909090',
-		address: 'Direccion',
+		address: 'Dirección',
 		user_type: 'admin' },
 
 	{   email:'operador@user.com',
@@ -21,7 +21,7 @@ users = [
 		name: 'Operador',
 		surname: 'Op',
 		dni: '36080808',
-		address: 'Direccion',
+		address: 'Dirección',
 		user_type: 'operador' },
 
 	{   email:'user1@user.com',
@@ -30,7 +30,7 @@ users = [
 		name: 'User 1',
 		surname: 'User',
 		dni: '36666666',
-		address: 'Direccion',
+		address: 'Dirección',
 		user_type: 'user' },
 	{   email:'user2@user.com',
 		password:'1q2w3e',
@@ -38,7 +38,7 @@ users = [
 		name: 'Usuario 2',
 		surname: 'Usuario',
 		dni: '30887777',
-		address: 'Direccion',
+		address: 'Dirección',
 		user_type: 'user' }
 
 ]

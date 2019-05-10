@@ -1,0 +1,33 @@
+<% @reservation = Reservation.where('box_id = ?', box.id).last %>
+	<div class="col-6">
+		<p>
+		  <strong>Desde:</strong>
+			<%= @reservation.fecha_desde.strftime('%d-%m-%Y') %>
+		  <strong>Hasta:</strong>
+			<%= @reservation.fecha_hasta.strftime('%d-%m-%Y') %>
+		</p>
+	</div>
+	<div class="col-6">
+		<p>
+		  <strong>Cliente:</strong>
+			<%= @reservation.client.apellido + ',  ' + @reservation.client.nombre %>
+		</p>
+	</div>
+	<div class="col-6">
+		<p>
+		  <strong>DNI:</strong>
+			<%= @reservation.client.dni %>
+		</p>
+	</div>
+	<div class="col-6">
+		<p>
+		  <strong>Teléfono:</strong>
+			<%= @reservation.client.telefono %>
+		</p>
+	</div>
+	<div class="col-6">
+		<p>
+		  <strong>Celular:</strong>
+			<%= @reservation.client.celular %>
+		</p>
+	</div>
