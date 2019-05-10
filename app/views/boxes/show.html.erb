@@ -26,14 +26,14 @@
           <p class="badge badge-warning">Pendiente</p>
       <% end %>
     </div>
-  </div>
 
-  <% @reservation = Reservation.where('box_id = ?', box.id).last %>
-  <div class="col-6">
-    <p>
-      <strong>Hasta:</strong>
-      <%= @reservation.fecha_hasta.strftime('%d-%m-%Y') %>
-    </p>
+    <% @reservation = Reservation.where('box_id = ?', @box.id).last %>
+    <div class="col-6">
+      <p>
+        <strong>Hasta:</strong>
+        <%= @reservation.fecha_hasta.strftime('%d-%m-%Y') %>
+      </p>
+    </div>
   </div>
 
   <% if !(@box.state == 0) and current_user.user_type == 'operador' %>
