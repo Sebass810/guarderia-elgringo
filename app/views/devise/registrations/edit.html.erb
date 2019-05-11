@@ -19,7 +19,7 @@
       </div>
 
       <div class="col-4">
-        <%= f.label "DNI" %>
+        <%= f.label :dni, "DNI" %>
         <span style="color: rgba(255,0,0,0.7); font-size: 12px;">
           <%= resource.errors[:dni].any? ? resource.errors[:dni].to_s[/\w([^"]*)/] : "" %>
         </span>

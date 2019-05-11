@@ -22,21 +22,21 @@
       		<p class="badge badge-success">Libre</p>
       	<% when 1  %>
       		<p class="badge badge-danger">Reservado</p>
+          <% @reservation = Reservation.where('box_id = ?', @box.id).last %>
+          
+            <p>
+              <strong>Hasta:</strong>
+              <%= @reservation.fecha_hasta.strftime('%d-%m-%Y') %>
+            </p>
+          
         <% when 2  %>
           <p class="badge badge-warning">Pendiente</p>
       <% end %>
     </div>
 
-    <% @reservation = Reservation.where('box_id = ?', @box.id).last %>
-    <div class="col-6">
-      <p>
-        <strong>Hasta:</strong>
-        <%= @reservation.fecha_hasta.strftime('%d-%m-%Y') %>
-      </p>
-    </div>
   </div>
 
-  <% if !(@box.state == 0) and current_user.user_type == 'operador' %>
+  <% if @box.state != 0 and current_user.user_type != 'user' %>
     <div class="col-6">
       <h2 class="h2">Datos del cliente</h2>
       <%= render 'reserva', box: @box %>

@@ -43,6 +43,9 @@
             <td></td>
           <% end %>
           <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Desea Eliminar la reserva?' }, class: "btn btn-sm btn-outline-danger" %></td>
+        <% elsif current_user.user_type == 'user' and reservation.estado == 0 %>
+          <td><%= link_to 'Modificar', edit_reservation_path(reservation), class: "btn btn-sm btn-outline-success" %></td>
+          <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Desea Eliminar la reserva?' }, class: "btn btn-sm btn-outline-danger" %></td>
         <% end %>
       </tr>
     <% end %>
