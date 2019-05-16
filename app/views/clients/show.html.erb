@@ -28,5 +28,5 @@
   <%= @client.estado %>
 </p>
 
-<%= link_to 'Modificar', edit_client_path(@client) %> |
-<%= link_to 'Reservar', new_reservation_path %>
+<%= link_to 'Modificar', edit_client_path(@client), class: 'btn btn-success' %>
+<%= link_to 'Volver', clients_path, class: 'btn btn-secondary' %>

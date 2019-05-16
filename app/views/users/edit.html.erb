@@ -1,4 +1,4 @@
-<h2 class="text-center">Editar datos user</h2>
+<h2 class="text-center">Modificar datos del usuario</h2>
 
 <%= form_for @user do |f| %>
   <div>
@@ -14,12 +14,12 @@
       </div>
 
       <div class="col-4">
-        <%= f.label "DNI" %>
+        <%= f.label :dni, "DNI" %>
         <%= f.number_field :dni, autocomplete: "dni", class: 'form-control form-control-sm' %>
       </div>
 
       <div class="col-4">
-        <%= f.label "Dirección" %>
+        <%= f.label :address, "Dirección" %>
         <%= f.text_field :address, autocomplete: "address", class: 'form-control form-control-sm' %>
       </div>
 

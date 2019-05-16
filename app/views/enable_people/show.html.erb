@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Client:</strong>
+  <strong>Cliente:</strong>
   <%= @enable_person.client.nombre + ' ' + @enable_person.client.apellido %>
 </p>
 
@@ -30,5 +28,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Editar', edit_enable_person_path(@enable_person), class: 'btn btn-info' %>
-<%= link_to 'volver', enable_people_path, class: 'btn btn-secondary' %>
+<%= link_to 'Modificar', edit_enable_person_path(@enable_person), class: 'btn btn-info' %>
+<%= link_to 'Volver', enable_people_path, class: 'btn btn-secondary' %>

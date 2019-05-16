@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def index
     if can? :manage, User
       @users = User.all
+      if params[:name].present?
+        @users = User.where('dni like ?', "%#{params[:name]}%")
+      end
     else
       redirect_to(root_path)
     end

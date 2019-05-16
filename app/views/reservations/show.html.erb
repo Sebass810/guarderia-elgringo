@@ -1,7 +1,5 @@
-
-
 <p>
-  <strong>Client:</strong>
+  <strong>Cliente:</strong>
   <%= @reservation.client.nombre_completo %>
 </p>
 
@@ -33,6 +31,6 @@
 </p>
 
 <% if can? :edit, Reservation %>
-  <%= link_to 'Modificar', edit_reservation_path(@reservation) %> |
+  <%= link_to 'Modificar', edit_reservation_path(@reservation), class: 'btn btn-success' %>
 <% end %>
-<%= link_to 'Volver', reservations_path %>
+<%= link_to 'Volver', reservations_path, class: 'btn btn-secondary' %>

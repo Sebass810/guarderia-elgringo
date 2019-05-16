@@ -1,4 +1,4 @@
-<h1>Editar</h1>
+<h1>Modificar</h1>
 
 <% if current_user.user_type == 'user' and !current_user.client.nil? %>
 	<%= render 'form', enable_person: @enable_person %>
@@ -6,5 +6,5 @@
 	<%= render 'form_enable_person', enable_person: @enable_person %>
 <% end %>
 
-<%= link_to 'Ver', @enable_person, class: 'btn btn-info' %>
+<%= link_to 'Mostrar', @enable_person, class: 'btn btn-info' %>
 <%= link_to 'Volver', enable_people_path, class: 'btn btn-secondary' %>
