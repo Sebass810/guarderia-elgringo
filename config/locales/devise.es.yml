@@ -20,6 +20,14 @@ es:
           attributes:
             box:
               required: "Debe seleccionar un box"
+        client:
+          attributes:
+            telefono:
+              too_short: "Debe contener al menos %{count} caracteres"
+              too_long: "Debe contener %{count} caracteres como maximo"
+            celular:
+              too_short: "Debe contener al menos %{count} caracteres"
+              too_long: "Debe contener %{count} caracteres como maximo"
   devise:
     confirmations:
       confirmed: "Su cuenta ha sido confirmada."

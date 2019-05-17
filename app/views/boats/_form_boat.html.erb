@@ -24,7 +24,7 @@
   <% else %>
     <div class="form-group col-md-6">
       <%= form.label :Numero_cliente %>
-      <%= form.text_field :client_id, id: :boat_client_id %>
+      <%= form.hidden_field :client_id, id: :boat_client_id %>
       <%= form.text_field :boat_client_id, id: :client_id, class: 'form-control', autofocus: :true %>
     </div>
     <div class="form-group col-md-6">

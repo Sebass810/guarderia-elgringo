@@ -27,7 +27,7 @@
         <%= form.text_field :apellido,  id: :client_apellido, class:"form-control", value: current_user.surname, readonly: true %>
       </div>
       <div class="form-group col-md-6">    
-        <%= form.label "DNI" %>
+        <%= form.label "DNI" %> 
         <%= form.text_field :dni, id: :client_dni, class:"form-control", value: current_user.dni, readonly: true %>
       </div>
     <% elsif current_user.user_type == 'admin' %>
@@ -45,6 +45,7 @@
       </div>
       <div class="form-group col-md-6">    
         <%= form.label "DNI" %>
+        <label class="badge badge-warning">(8 caracteres minimo)</label>
         <%= form.text_field :dni, id: :client_dni, class: "form-control" %>
       </div>
     <% end %>
@@ -52,11 +53,14 @@
 
     <div class="form-group col-md-6">
       <%= form.label :Teléfono %>
-      <%= form.text_field :telefono, id: :client_telefono, class:"form-control", placeholder:"telefono fijo" %>
+      <label class="badge badge-warning">(7 caracteres minimo)</label>
+      <%= form.telephone_field :telefono, id: :client_telefono, class:"form-control", placeholder:"telefono fijo", placeholder: 'Ej: 456677' %>
     </div>
+
     <div class="form-group col-md-6"> 
       <%= form.label :Celular %>
-      <%= form.text_field :celular, id: :client_celular, class:"form-control", placeholder:"número de celular" %>
+      <label class="badge badge-warning">(10 caracteres minimo)</label>
+      <%= form.telephone_field :celular, id: :client_celular, class:"form-control", placeholder:"número de celular", placeholder: 'Ej: 379-4xxxxxx' %>
     </div>
 
     <div class="form-group col-md-6"> 
