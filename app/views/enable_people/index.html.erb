@@ -70,7 +70,7 @@
 <br>
 
 <% if current_user.user_type == 'user'%>
-  <% if @bajadas.nil? %>
+  <% if !@bajadas.nil? %>
     <%= render 'enable_people/shared/enable_person_show', bajadas: @bajadas %>
   <% end %>
 <% end %>
