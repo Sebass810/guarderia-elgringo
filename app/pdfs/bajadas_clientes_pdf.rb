@@ -29,7 +29,7 @@ class BajadasClientesPdf < Prawn::Document
 
 	#Método para almacenar y mostrar los registros del detalle de bajadas de clientes
 	def descent_client_item_rows
-	  [["Cliente", "Bote", "Persona", "fecha"]] +
+	  [["Cliente", "Bote", "Persona autorizada", "fecha"]] +
 	  @bajadas.map do |orden|
 	    [ 	"#{orden.client.apellido + ', '+ orden.client.nombre} ",
 	    	"#{orden.boat.nombre}", 
