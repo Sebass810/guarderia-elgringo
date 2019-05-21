@@ -20,14 +20,12 @@ class BajadasPdf < Prawn::Document
 	def body
 		if @bajadas_client.length != 0
 			descent_client
-		else
-			text "No se registro bajas de clientes en las fechas seleccionadas"
 		end
 		if @bajadas.length != 0
-    		descent	
-    	else
-    		text "No se registro bajas en las fechas seleccionadas"
-    	end
+    	descent	
+    else
+    	text "No se registro bajas en las fechas seleccionadas"
+    end
 	end
 
 	def footer
