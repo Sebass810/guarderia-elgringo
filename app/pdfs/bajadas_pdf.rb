@@ -3,7 +3,6 @@ class BajadasPdf < Prawn::Document
 	def initialize(bajadas, bajadas_client)
 		super()
 		@bajadas_client = bajadas_client.order("fecha DESC").all
-		@bajadas = bajadas.order("fecha DESC").all
 		@titulo = "Lista de bajadas"
 
     	header
@@ -21,11 +20,6 @@ class BajadasPdf < Prawn::Document
 		if @bajadas_client.length != 0
 			descent_client
 		end
-		if @bajadas.length != 0
-    	descent	
-    else
-    	text "No se registro bajas en las fechas seleccionadas"
-    end
 	end
 
 	def footer
