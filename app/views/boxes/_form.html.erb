@@ -27,7 +27,12 @@
 
   <div class="form-group col-md-6">
     <%= form.label 'Estado' %>
-    <%= form.select(:state, options_for_select([["Reservado",1], ["Libre",0]], selected: @box.state), {prompt: 'Estados'},  {:class => 'form-control form-control-sm' }) %>
+    <% case @box.state %>
+      <% when 0 %>
+        <%= form.select(:state, options_for_select([["Reservado",1], ["Libre",0]], selected: @box.state), {prompt: 'Estados'},  {:class => 'form-control form-control-sm' }) %>
+      <% else %>
+        <%= form.select(:state, options_for_select([["Reservado",1], ["Libre",0]], selected: @box.state), {prompt: 'Estados'},  {:class => 'form-control form-control-sm', readonly: true }) %>
+    <% end %>
   </div>
 
   <div class="actions">

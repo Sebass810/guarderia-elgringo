@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :set_client, only: [:get_client]
+  before_action :verificar, only: [:destroy]
 
   # GET /reservations
   # GET /reservations.json
@@ -101,6 +102,7 @@ class ReservationsController < ApplicationController
   # DELETE /reservations/1.json
   def destroy
     @reservation.destroy
+    actualiza_box
     respond_to do |format|
       format.html { redirect_to reservations_url, notice: 'Reservación suspendida.' }
       format.json { head :no_content }
@@ -124,6 +126,20 @@ class ReservationsController < ApplicationController
       else
         @client = @client[0]
       end
+    end
+
+    def verificar
+      reservation1 = Reservation.find(params[:id])
+      reservation2 = Reservation.where(box_id: reservation1.box_id)
+      reservation2 = reservation2.last()
+      if reservation1.id == reservation2.id
+        @box = @reservation.box
+      end
+    end
+
+    def actualiza_box
+      @box.state = 0
+      @box.save
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

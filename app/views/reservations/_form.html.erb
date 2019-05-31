@@ -27,7 +27,7 @@
   <div class="form-group col-md-3">
     <%= form.label :Box%>
     <% boxes_array = @boxes.all.map { |box| [box.id.to_s + " -> " + box.tamano, box.id] } %>
-    <%= form.select(:box_id, options_for_select(boxes_array), {:prompt => "Seleccione un box"}, {:class => "form-control"}) %>
+    <%= form.select(:box_id, options_for_select(boxes_array, selected: params[:id]), {:prompt => "Seleccione un box"}, {:class => "form-control", readonly: params[:id].present? ? true : false }) %>
   </div>
 </div>
 

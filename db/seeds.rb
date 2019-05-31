@@ -32,6 +32,25 @@ users = [
 		dni: '36666666',
 		address: 'Dirección',
 		user_type: 'user' },
+
+	{   email:'user3@user.com',
+		password:'1q2w3e',
+		password_confirmation: '1q2w3e',
+		name: 'User 4',
+		surname: 'User3',
+		dni: '3666333',
+		address: 'Dirección',
+		user_type: 'user' },
+
+	{   email:'user4@user.com',
+		password:'1q2w3e',
+		password_confirmation: '1q2w3e',
+		name: 'User 4',
+		surname: 'User4',
+		dni: '36666444',
+		address: 'Dirección',
+		user_type: 'user' },
+
 	{   email:'user2@user.com',
 		password:'1q2w3e',
 		password_confirmation: '1q2w3e',
@@ -73,6 +92,22 @@ boxes = [
 		descripcion: '10mts X 5mtrs',
       	tamano: 'Grande'
 	},
+	{
+		descripcion: '10mts X 5mtrs',
+      	tamano: 'Grande'
+	},
+	{
+		descripcion: '10mts X 5mtrs',
+      	tamano: 'Grande'
+	},
+	{
+		descripcion: '10mts X 5mtrs',
+      	tamano: 'Grande'
+	},
+	{
+		descripcion: '10mts X 5mtrs',
+      	tamano: 'Grande'
+	}
 ]
 
 boxes.each do | b |

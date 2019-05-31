@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/estadisticas_bajadas_clientes' => 'report#estadisticas_bajadas_clientes'
 
   get 'reservation_cliente/:id', to: 'reservations#get_client'
+
+  get 'boxes/:id/reservations/new', to: 'reservations#new'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

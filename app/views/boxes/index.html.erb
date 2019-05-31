@@ -30,7 +30,7 @@
               <%= link_to 'Mostrar', box, class: 'btn btn-outline-primary btn-sm' %>
               <% if current_user.user_type != 'admin' %>
                 <% if box.state == 0 %>
-                  <%= link_to 'Reservar', new_reservation_path, class: 'btn btn-outline-secondary btn-sm' %>
+                  <%= link_to 'Reservar', 'boxes/' + box.id.to_s + '/reservations/new', class: 'btn btn-outline-secondary btn-sm' %>
                 <% end %>
               <% end %>
             </li>
@@ -39,7 +39,9 @@
                 <%= link_to 'Modificar', edit_box_path(box), class: 'btn btn-outline-success btn-sm' %>
               <% end %>
               <% if can? :destroy, Box%>
-                <%= link_to 'Eliminar', box, method: :delete, data: { confirm: 'Desea Eliminar este Box?' }, class: 'btn btn-outline-danger btn-sm' %>
+                <% if box.state == 0 %>
+                  <%= link_to 'Eliminar', box, method: :delete, data: { confirm: 'Desea Eliminar este Box?' }, class: 'btn btn-outline-danger btn-sm' %>
+                <% end %>
               <% end %>
             </li>
           </ul>

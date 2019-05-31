@@ -18,12 +18,12 @@
   <div class="row">
     <div class="form-group col-md-6">
       <%= form.label "Cliente nro" %>
-      <%= form.hidden_field :client_id, id: 'reservation_client_id', value: @reservation.client_id %>
-      <%= form.text_field :reservacion_client_id, class: 'form-control form-control-sm', id: 'client_id', autofocus: :true %>
+      <%= form.hidden_field :client_id, id: 'reservation_client_id', value: reservation.client_id %>
+      <%= form.text_field :reservacion_client_id, class: 'form-control form-control-sm', id: 'client_id', autofocus: :true, value: reservation.client_id %>
     </div>
     <div class="form-group col-md-6">
       <%= form.label "Cliente nombre" %>
-      <%= form.text_field :client_name, class: 'form-control form-control-sm', readonly: true, id: 'reservation_client_name' %>
+      <%= form.text_field :client_name, class: 'form-control form-control-sm', readonly: true, id: 'reservation_client_name', value: reservation.client.present? ? reservation.client.nombre_completo : '' %>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
     <div class="form-group col-md-6">
       <%= form.label :Box %>
       <% boxes_array = @boxes.all.map { |box| [box.id.to_s + " -> " + box.tamano, box.id] } %>
-      <%= form.select(:box_id, options_for_select(boxes_array), {:prompt => "Seleccione un box"}, {:class => "form-control"}) %>
+      <%= form.select(:box_id, options_for_select(boxes_array, selected: params[:id]), {:prompt => "Seleccione un box"}, {:class => "form-control", readonly: params[:id].present? ? true : false }) %>
     </div>
 
     <div class="form-group col-md-6">
