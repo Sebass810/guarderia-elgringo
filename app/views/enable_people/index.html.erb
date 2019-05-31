@@ -59,9 +59,14 @@
             <% end %>
 
           </td>
-          <td><%= link_to 'Mostrar', enable_person, class: 'btn btn-success' %></td>
-          <td><%= link_to 'Modificar', edit_enable_person_path(enable_person), class: 'btn btn-info' %></td>
-          <td><%= link_to 'Eliminar', enable_person, method: :delete, data: { confirm: '¿Confirma eliminar el registro?' }, class: 'btn btn-danger' %></td>
+          <td><%= link_to 'Mostrar', enable_person, class: 'btn btn-success btn-sm' %></td>
+          <td><%= link_to 'Modificar', edit_enable_person_path(enable_person), class: 'btn btn-info btn-sm' %></td>
+          <td>
+            <%= form_for enable_person, data: { confirm: '¿Confirma eliminar el registro?' } do |form|%>
+              <%= form.hidden_field :estado, value: 1 %>
+              <%= form.submit 'Eliminar', class: 'btn btn-sm btn-danger'%>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

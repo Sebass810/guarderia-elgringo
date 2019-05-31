@@ -5,12 +5,12 @@ class EnablePeopleController < ApplicationController
   # GET /enable_people.json
   def index
     if current_user.user_type == 'admin' or current_user.user_type == 'operador'
-      @enable_people = EnablePerson.all
+      @enable_people = EnablePerson.where(estado: 0)
       if params[:dni].present?
         @enable_people = @enable_people.where('dni like ?', "%#{params[:dni]}%")
       end
     elsif can? :manage, EnablePerson and !current_user.client.nil?
-      @enable_people = EnablePerson.where('client_id = ?', current_user.client.id)
+      @enable_people = EnablePerson.where('client_id = ? and estado = ?', current_user.client.id, 0)
       @bajadas = DescentClient.select('*').where('client_id = ?', current_user.client.id).group("enable_person_id").count
       if params[:dni].present?
         @enable_people = @enable_people.where('dni like ?', "%#{params[:dni]}%")
@@ -39,7 +39,7 @@ class EnablePeopleController < ApplicationController
 
     respond_to do |format|
       if @enable_person.save
-        format.html { redirect_to @enable_person, notice: 'Se agrego persona habilitada.' }
+        format.html { redirect_to @enable_person, notice: 'Se agrego persona autorizada.' }
         format.json { render :show, status: :created, location: @enable_person }
       else
         format.html { render :new }
@@ -52,12 +52,19 @@ class EnablePeopleController < ApplicationController
   # PATCH/PUT /enable_people/1.json
   def update
     respond_to do |format|
-      if @enable_person.update(enable_person_params)
-        format.html { redirect_to @enable_person, notice: 'Actualizacion satisfactoria.' }
-        format.json { render :show, status: :ok, location: @enable_person }
+      if params[:commit] == "Eliminar"
+        if @enable_person.update(enable_person_params)
+          format.html { redirect_to '/enable_people/', notice: 'El registro fue dado de baja.' }
+          format.json { head :no_content }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @enable_person.errors, status: :unprocessable_entity }
+        if @enable_person.update(enable_person_params)
+          format.html { redirect_to @enable_person, notice: 'Actualizacion satisfactoria.' }
+          format.json { render :show, status: :ok, location: @enable_person }
+        else
+          format.html { render :edit }
+          format.json { render json: @enable_person.errors, status: :unprocessable_entity }
+        end  
       end
     end
   end
