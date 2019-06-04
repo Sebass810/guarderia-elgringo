@@ -48,7 +48,8 @@
     <% case @box.state %>
       <% when 0 %>
         <%= form.select(:state, options_for_select([["Reservado",1], ["Libre",0]], selected: @box.state), {prompt: 'Estados'},  {:class => 'form-control form-control-sm' }) %>
-      
+      <% else %>
+        <%= form.select(:state, options_for_select([["Reservado",1] selected: @box.state), {prompt: 'Estados'},  {:class => 'form-control form-control-sm', readonly: true }) %>
     <% end %>
   </div>
 
