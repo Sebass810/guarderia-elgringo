@@ -1,14 +1,6 @@
 class ReportController < ApplicationController
   
-  def index
-
-		if params["fecha_desde"].present? and params["fecha_hasta"].present?
-			if params["fecha_desde"] > params["fecha_hasta"]
-				respond_to do |format|
-        	format.html { redirect_to '/report/index', alert: 'Error al ingresar las fechas.' }
-        end
-			end
-		end
+  def index		
   	@bajadas_client = DescentClient.all
 
 		if params["fecha_desde"].present?
@@ -16,6 +8,15 @@ class ReportController < ApplicationController
 		end
 		if params["fecha_hasta"].present?
 			@bajadas_client = @bajadas_client.where('fecha <= ?', params["fecha_hasta"])
+		end
+
+		if params["fecha_desde"].present? and params["fecha_hasta"].present?
+			if params["fecha_desde"] > params["fecha_hasta"]
+				@bajadas_client = nil				
+				respond_to do |format|
+        	format.html { redirect_to '/report/index', alert: 'Error al ingresar las fechas.' }
+        end
+			end
 		end
 
 
