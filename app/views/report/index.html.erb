@@ -1,20 +1,15 @@
 <h1 class="alert alert-info">Reportes</h1>
 
 <div class="container">
-	<div class="row">
-		<div class="form-group">
-			<h3>Clientes</h3>
-
-		</div>
-	</div>
-
+	
 	<div class="row">
 		<div class="form-group">
 			<div>
 				<span><p id="noti"></p></span>
 			</div>
 			<h3>Bajadas</h3>
-			<%= form_tag estadisticas_bajadas_path(format: "pdf"), :target => '_blank', :method => :get, id: 'form-update-detalle', class: 'form-inline' do %>
+
+			<%= form_tag report_index_path, :method => :get, id: 'form-update-detalle', class: 'form-inline' do %>
 				<div class="form-group mb-2">
 					<%= label_tag 'Fecha desde' %>
 					<%= date_field_tag :fecha_desde,'01/01/2014', class: 'form-control' %>
@@ -24,15 +19,41 @@
 					<%= date_field_tag :fecha_hasta, '01/01/2014', class: 'form-control form-control-sm' %>
 				</div>
 				<div class="row form-group">
-					<%= submit_tag 'Confirmar', class: 'btn btn-outline-info btn-sm mb-2', id: 'btn-confirm-detalle'	%>
+					<%= submit_tag 'Buscar', class: 'btn btn-outline-info btn-sm mb-2', id: 'btn-confirm-detalle'	%>
 				</div>
 			<% end %>
+
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="form-group">
-			<h3>Box</h3>	
-		</div>
-	</div>
+	<% if !@bajadas_client.nil? %>
+		<table class="table table-hover">
+			<thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Lancha</th>
+          <th scope="col">Matricula</th>
+          <th scope="col">Persona Autorizada</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+
+			<% @bajadas_client.each do |b| %>	
+				<tr>
+          <td><%= b.id %></td>
+          <td><%= b.client.nombre_completo %></td>
+          <td><%= b.boat.nombre %></td>
+          <td><%= b.boat.matricula %></td>
+          <td><%= b.enable_person.nombre %></td>
+          <td><%= b.fecha.strftime('%d-%m-%Y') %></td>
+        </tr>
+			<% end %>
+
+		</table>
+		<% if !@bajadas_client.empty? %>
+			<%= link_to "Reporte", estadisticas_bajadas_path(format: "pdf"), :target => '_blank', class: 'btn btn-link' %>
+		<% end %>	
+	<% end %>
+
 </div>

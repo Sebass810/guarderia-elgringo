@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/nuevo_cliente/:id', to: 'clients#show_user'
   get '/report/index'
   get '/estadisticas_bajadas' => 'report#estadisticas_bajadas'
-  get '/estadisticas_bajadas_clientes' => 'report#estadisticas_bajadas_clientes'
+  get '/estadisticas_bajadas_clientes' => 'report#estadisticas_bajadas'
 
   get 'reservation_cliente/:id', to: 'reservations#get_client'
 
